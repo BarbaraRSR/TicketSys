@@ -16,6 +16,8 @@ $results = $crud->getTickets();
             <th scope="col">Folio</th>
             <th scope="col">Actualizado</th>
             <th scope="col">Cliente</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">Servicio</th>
             <th scope="col">Estatus</th>
             </th>
         </tr>
@@ -26,6 +28,8 @@ $results = $crud->getTickets();
                 <td><?php echo $r['folio'] ?></td>
                 <td><?php echo $r['actualizado'] ?></td>
                 <td><?php echo $r['cliente'] ?></td>
+                <td><?php echo $r['equipo'] ?></td>
+                <td><?php echo $r['servicio'] ?></td>
                 <td><?php echo $r['estatus'] ?></td>
                 <td>
                     <a href="view.php?folio=<?php echo $r['folio'] ?>" class="btn btn-primary">Revisar</a>
