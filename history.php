@@ -1,5 +1,5 @@
 <?php
-$title = 'View Tickets';
+$title = 'History Tickets';
 
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
@@ -44,3 +44,4 @@ $results = $crud->getTickets();
 
 
 <?php require_once 'includes/footer.php'; ?>
+

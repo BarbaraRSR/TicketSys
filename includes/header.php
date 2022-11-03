@@ -36,9 +36,9 @@ include_once 'includes/session.php' ?>
 
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-link active" href="dashboard.php">Inicio</a>
+                        <a class="nav-link" href="dashboard.php">Inicio</a>
                         <a class="nav-link" href="registration.php">Alta</a>
-                        <a class="nav-link" href="#">Historial</a>
+                        <a class="nav-link" href="history.php">Historial</a>
                     </div>
                     <div class="navbar-nav ms-auto">
                     <?php

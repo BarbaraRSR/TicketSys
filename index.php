@@ -7,7 +7,7 @@ require_once "db/conn.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = strtolower(trim($_POST['username']));
     $password = $_POST['password'];
-    $new_password = md5($password . $username);
+    //$new_password = md5($password . $username);
 
     //$result = $user->getUser($username, $new_password); //With extre security
     $result = $user->getUser($username, $password);
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo '<div class="alert alert-danger">Username or Password is incorrect: Please try again. </div>';
     } else {
         $_SESSION['username'] = $username;
-        $_SESSION['userid'] = $result['id'];
+        $_SESSION['userid'] = $result['usuario_id'];
         header("Location: dashboard.php");
     }
 }
@@ -77,3 +77,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
 
 <?php include_once "includes/footer.php" ?>
+
+
