@@ -12,12 +12,12 @@ if (isset($_POST['submit'])) {
     $servicio = $_POST['servicio'];
     $estimado = $_POST['estimado'];
     $descripcion = $_POST['descripcion'];
-    $actualizado = $_POST['actualizado'];
+    $creacion = $_POST['creacion'];
     $estatus = $_POST['estatus'];
 
 
     //Call Crud function
-    $result = $crud->editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $actualizado, $estatus);
+    $result = $crud->editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $creacion, $estatus);
     //Redirect to index.php
     if ($result) {
         header("Location: dashboard.php");

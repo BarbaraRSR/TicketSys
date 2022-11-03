@@ -13,6 +13,7 @@ require_once 'db/conn.php';
     <div class="card-body p-4 p-sm-5">
         <!-- Registrar datos del cliente -->
         <h4 class="card-title text-center mb-5 fw-light fs-5">CLIENTE</h4>
+
         <form method="post" action="success.php">
             <div class="row">
                 <div class="form-floating mb-3">
@@ -42,6 +43,7 @@ require_once 'db/conn.php';
                         <option value="Nokia">Nokia</option>
                         <option value="Apple">Apple</option>
                         <option value="Samsung">Samsung</option>
+                        <option value="Otro">Otro</option>
                     </select>
                     <label for="equipo">Equipo</label>
                 </div></div>
@@ -57,7 +59,7 @@ require_once 'db/conn.php';
                     <label for="servicio">Servicio*</label>
                 </div></div>
                 <div class="col"><div class="form-floating mb-3">
-                    <input type="text" name="estimado" class="form-control" id="estimado">
+                    <input type="number" name="estimado" class="form-control" id="estimado">
                     <label for="estimado">Costo estimado</label>
                 </div></div>
                 <!-- Descripción -->
@@ -66,6 +68,20 @@ require_once 'db/conn.php';
                     <label for="descripcion">&nbsp; Descripción del servicio</label>
                 </div>
             </div>
+
+            <!--
+            <div class=" mb-3">
+                <label for="actualizado" class="form-label">Actualizado</label>
+                <input type="date" class="form-control" id="actualizado" name="actualizado">
+            </div>
+            <div class="mb-3">
+                <label for="estatus" class="form-label">Estatus</label>
+                <select class="form-select" aria-label="Default select example" id="estatus" name="estatus">
+                    <option value="Abierto">Abierto</option>
+                    <option value="Cerrado">Cerrado</option>
+            </select>
+-->
+    </div>
 
             <!-- Botones -->
             <div class="text-center">

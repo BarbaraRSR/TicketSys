@@ -46,7 +46,7 @@ include_once 'includes/session.php' ?>
                     ?>
                         <a class="nav-link" href="index.php">Ingresar</a>
                     <?php } else { ?>
-                        <a class="nav-link" href="#"><span> ¡Hola, <?php echo $_SESSION['username']?>!</span></a>
+                        <a class="nav-link" href="#"><span> ¡Hola, <?php echo ucfirst($_SESSION['username'])?>!</span></a>
                         <a class="nav-link" href="logout.php">Salir</a>
                     <?php } ?>
                     </div>

@@ -26,7 +26,7 @@ if (!isset($_GET['folio'])) {
                 Servicio: <?php echo $result['servicio']; ?><br>
                 Precio Estimado: <?php echo $result['estimado']; ?><br>
                 Descripción: <?php echo $result['descripcion']; ?><br>
-                Actualizado: <?php echo $result['actualizado']; ?><br>
+                Antiguedad: <?php echo $result['creacion']; ?><br>
                 Estatus: <?php echo $result['estatus']; ?><br>
                 
             </p>

@@ -57,8 +57,8 @@ if (!isset($_GET['folio'])) {
             <input required type="text" class="form-control" value="<?php echo $ticket['descripcion'] ?>" id="descripcion" name="descripcion">
         </div>
         <div class=" mb-3">
-            <label for="actualizado" class="form-label">Actualizado</label>
-            <input type="date" class="form-control" value="<?php echo $ticket['actualizado'] ?>" id="actualizado" name="actualizado">
+            <label for="creacion" class="form-label">Antigüedad</label>
+            <input type="date" class="form-control" value="<?php echo $ticket['creacion'] ?>" id="creacion" name="creacion">
         </div>
         <div class="mb-3">
             <label for="estatus" class="form-label">Estatus</label>

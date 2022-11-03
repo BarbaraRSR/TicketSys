@@ -6,7 +6,7 @@ require_once 'includes/auth_check.php';
 require_once 'db/conn.php';
 
 // Get all attendees
-$results = $crud->getTickets();
+$results = $crud->getTicketsDashboard();
 ?>
 
 <a href="registration.php" class="btn btn-danger">Nuevo registro</a>
@@ -27,7 +27,7 @@ $results = $crud->getTickets();
         <?php while ($r = $results->fetch(PDO::FETCH_ASSOC)) { ?>
             <tr>
                 <td><?php echo $r['folio'] ?></td>
-                <td><?php echo $r['actualizado'] ?></td>
+                <td><?php echo $r['creacion'] ?></td>
                 <td><?php echo $r['cliente'] ?></td>
                 <td><?php echo $r['equipo'] ?></td>
                 <td><?php echo $r['servicio'] ?></td>
