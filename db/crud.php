@@ -41,7 +41,11 @@ class crud
     public function editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty)
     {
         try {
+<<<<<<< Updated upstream
             $sql = "UPDATE `attendee` SET `firstname`=:fname,`lastname`=:lname,`dateofbirth`=:dob,`emailaddress`=:email,`contactnumber`=:contact,`specialty_id`=:specialty WHERE attendee_id = :id";
+=======
+            $sql = "UPDATE `tickets` SET `cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`actualizado`=:actualizado,`estatus`=:estatus WHERE folio = :folio";
+>>>>>>> Stashed changes
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
             $stmt->bindparam(':id', $id);
