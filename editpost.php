@@ -3,16 +3,21 @@ require_once 'db/conn.php';
 //Get values from post operation
 if (isset($_POST['submit'])) {
     //extract values from the $_POST array
-    $id = $_POST['id'];
-    $fname = $_POST['firstname'];
-    $lname = $_POST['lastname'];
-    $dob = $_POST['dob'];
-    $email = $_POST['email'];
-    $contact = $_POST['phone'];
-    $specialty = $_POST['specialty'];
+    $folio = $_POST['folio'];
+    $cliente = $_POST['cliente'];
+    $correo = $_POST['correo'];
+    $telefono = $_POST['telefono'];
+    $equipo = $_POST['equipo'];
+    $serie = $_POST['serie'];
+    $servicio = $_POST['servicio'];
+    $estimado = $_POST['estimado'];
+    $descripcion = $_POST['descripcion'];
+    $actualizado = $_POST['actualizado'];
+    $estatus = $_POST['estatus'];
+
 
     //Call Crud function
-    $result = $crud->editTicket($id, $fname, $lname, $dob, $email, $contact, $specialty);
+    $result = $crud->editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $actualizado, $estatus);
     //Redirect to index.php
     if ($result) {
         header("Location: dashboard.php");

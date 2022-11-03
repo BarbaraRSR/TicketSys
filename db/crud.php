@@ -41,7 +41,7 @@ class crud
     public function editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $actualizado, $estatus)
     {
         try {
-            $sql = "UPDATE `tickets` SET `folio`=:folio,`cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`actualizado`=:actualizado,`estatus`=:estatus";
+            $sql = "UPDATE `tickets` SET `cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`actualizado`=:actualizado,`estatus`=:estatus WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
             $stmt->bindparam(':folio', $folio);
