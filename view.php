@@ -35,6 +35,8 @@ if (!isset($_GET['folio'])) {
 
     <br>
     <a href="dashboard.php" class="btn btn-info">Regreso</a>
+    <a href="edit.php?folio=<?php echo $result['folio'] ?>" class="btn btn-warning">Editar</a>
+    <a onclick="return confirm('Proceder a borrar este ticket permanentemente?');" href="delete.php?folio=<?php echo $result['folio'] ?>" class="btn btn-danger">Borrar</a>
 
 <?php } ?>
 

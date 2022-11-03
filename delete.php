@@ -2,16 +2,16 @@
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['folio'])) {
     //echo 'error';
     include 'includes/errormessage.php';
     header("Location: dashboard.php");
 } else {
-    //Get ID values
-    $id = $_GET['id'];
+    //Get folio values
+    $folio = $_GET['folio'];
 
     //Call Delete function
-    $result = $crud->deleteAttendee($id);
+    $result = $crud->deleteTicket($folio);
     //Redirect to list
     if ($result) {
         header("Location: dashboard.php");
