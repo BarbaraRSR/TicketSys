@@ -67,7 +67,7 @@ class crud
     public function getTickets()
     {
         try {
-            $sql = "SELECT * FROM `tickets`";
+            $sql = "SELECT * FROM tickets WHERE estatus = 'abierto'";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
