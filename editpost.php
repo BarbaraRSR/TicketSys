@@ -17,11 +17,7 @@ if (isset($_POST['submit'])) {
 
 
     //Call Crud function
-<<<<<<< Updated upstream
-    $result = $crud->editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty);
-=======
     $result = $crud->editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $actualizado, $estatus);
->>>>>>> Stashed changes
     //Redirect to index.php
     if ($result) {
         header("Location: dashboard.php");
