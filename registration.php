@@ -6,65 +6,77 @@ require_once 'db/conn.php';
 
 ?>
 
-<h1 class="text-center">Registrar Ticket </h1>
+<h3 class="text-center">Registrar Ticket </h3>
 
-<form method="post" action="success.php">
-    <div class="mb-3">
-        <label for="cliente" class="form-label">Cliente</label>
-        <input required type="text" class="form-control" id="cliente" name="cliente">
-    </div>
-    <div class="mb-3">
-        <label for="correo" class="form-label">Correo</label>
-        <input required type="email" class="form-control" id="correo" name="correo" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-        <label for="telefono" class="form-label">Teléfono</label>
-        <input type="text" class="form-control" id="telefono" name="telefono" aria-describedby="phoneHelp">
-    </div>
-    <div class="mb-3">
-        <label for="equipo" class="form-label">Equipo</label>
-        <select class="form-select" aria-label="Default select example" id="equipo" name="equipo">
-            <option value="Motorola">Motorola</option>
-            <option value="Nokia">Nokia</option>
-            <option value="Apple">Apple</option>
-            <option value="Samsung">Samsung</option>
-            <option value="Otro">Otro</option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label for="serie" class="form-label">Serie</label>
-        <input required type="text" class="form-control" id="serie" name="serie">
-    </div>
-    <div class="mb-3">
-        <label for="servicio" class="form-label">Servicio</label>
-        <input required type="text" class="form-control" id="servicio" name="servicio">
-    </div>
-    <div class="mb-3">
-        <label for="estimado" class="form-label">Estimado</label>
-        <input required type="number" class="form-control" id="estimado" name="estimado">
-    </div>
-    <div class="mb-3">
-        <label for="descripcion" class="form-label">Descripción</label>
-        <input required type="text" class="form-control" id="descripcion" name="descripcion">
-    </div>
-    <div class=" mb-3">
-        <label for="actualizado" class="form-label">Actualizado</label>
-        <input type="date" class="form-control" id="actualizado" name="actualizado">
-    </div>
-    <div class="mb-3">
-        <label for="estatus" class="form-label">Estatus</label>
-        <select class="form-select" aria-label="Default select example" id="estatus" name="estatus">
-            <option value="Abierto">Abierto</option>
-            <option value="Cerrado">Cerrado</option>
+<div class="container">
+  <div class="card border-0 shadow rounded-3 my-5">
+    <div class="card-body p-4 p-sm-5">
+        <!-- Registrar datos del cliente -->
+        <h4 class="card-title text-center mb-5 fw-light fs-5">CLIENTE</h4>
+        <form method="post" action="success.php">
+            <div class="row">
+                <div class="form-floating mb-3">
+                    <input required type="text" name="cliente" class="form-control" id="cliente">
+                    <label for="cliente">&nbsp; Nombre del cliente*</label>
+                </div>
+                <div class="col"><div class="form-floating mb-3">
+                    <input required type="text" name="telefono" class="form-control" id="telefono">
+                    <label for="telefono">Teléfono*</label>
+                </div></div>
+                <div class="col"><div class="form-floating mb-3">
+                    <input type="email" name="correo" class="form-control" id="correo" aria-describedby="emailHelp">
+                    <label for="correo">Correo electrónico</label>
+                </div></div>
+            </div>
 
-        </select>
-    </div>
-    <div class="d-grid gap-2">
-        <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar Registro</button>
-        <a href="dashboard.php" class="btn btn-danger">Cancelar</a>
-    </div>
-</form>
+        <hr class="my-4">
 
+        <!-- Información del equipo -->
+        <h4 class="card-title text-center mb-5 fw-light fs-5">Información del equipo</h4>
+            <div class="row">
+                <!-- Equipo y serie -->
+                <div class="col"><div class="form-floating mb-3">
+                    <select type="text" name="equipo" class="form-select" id="equipo" aria-label="Default select example">
+                        <option value=""></option>
+                        <option value="Motorola">Motorola</option>
+                        <option value="Nokia">Nokia</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                    </select>
+                    <label for="equipo">Equipo</label>
+                </div></div>
+                <div class="col"><div class="form-floating mb-3">
+                    <input required type="text" name="serie" class="form-control" id="serie">
+                    <label for="serie">Número de serie</label>
+                </div></div>
+            </div>
+            <div class="row">
+                <!-- Servicio y costo -->
+                <div class="col"><div class="form-floating mb-3">
+                    <input required type="text" name="servicio" class="form-control" id="servicio">
+                    <label for="servicio">Servicio*</label>
+                </div></div>
+                <div class="col"><div class="form-floating mb-3">
+                    <input type="text" name="estimado" class="form-control" id="estimado">
+                    <label for="estimado">Costo estimado</label>
+                </div></div>
+                <!-- Descripción -->
+                <div class="form-floating mb-3">
+                    <input required type="text" name="descripcion" class="form-control" id="descripcion">
+                    <label for="descripcion">&nbsp; Descripción del servicio</label>
+                </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="text-center">
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar registro</button>
+                &nbsp; &nbsp;
+                <a href="dashboard.php" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
 
 
 <?php
