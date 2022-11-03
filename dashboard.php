@@ -9,6 +9,7 @@ require_once 'db/conn.php';
 $results = $crud->getTickets();
 ?>
 
+<a href="registration.php" class="btn btn-danger">Nuevo registro</a>
 
 <table class="table">
     <thead>
