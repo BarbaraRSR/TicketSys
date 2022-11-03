@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $specialty = $_POST['specialty'];
 
     //Call Crud function
-    $result = $crud->editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty);
+    $result = $crud->editTicket($id, $fname, $lname, $dob, $email, $contact, $specialty);
     //Redirect to index.php
     if ($result) {
         header("Location: dashboard.php");
