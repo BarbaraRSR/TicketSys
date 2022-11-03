@@ -24,7 +24,7 @@ include_once 'includes/session.php' ?>
 
     <div class="container">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #005dac;">
 
             <div class="container-fluid">
                 <a class="navbar-brand" href="dashboard.php">

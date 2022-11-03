@@ -38,19 +38,23 @@ class crud
         }
     }
 
-    public function editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty)
+    public function editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $actualizado, $estatus)
     {
         try {
             $sql = "UPDATE `tickets` SET `cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`actualizado`=:actualizado,`estatus`=:estatus WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
-            $stmt->bindparam(':id', $id);
-            $stmt->bindparam(':fname', $fname);
-            $stmt->bindparam(':lname', $lname);
-            $stmt->bindparam(':dob', $dob);
-            $stmt->bindparam(':email', $email);
-            $stmt->bindparam(':contact', $contact);
-            $stmt->bindparam(':specialty', $specialty);
+            $stmt->bindparam(':folio', $folio);
+            $stmt->bindparam(':cliente', $cliente);
+            $stmt->bindparam(':correo', $correo);
+            $stmt->bindparam(':telefono', $telefono);
+            $stmt->bindparam(':equipo', $equipo);
+            $stmt->bindparam(':serie', $serie);
+            $stmt->bindparam(':servicio', $servicio);
+            $stmt->bindparam(':estimado', $estimado);
+            $stmt->bindparam(':descripcion', $descripcion);
+            $stmt->bindparam(':actualizado', $actualizado);
+            $stmt->bindparam(':estatus', $estatus);
             // execute statement
             $stmt->execute();
             return true;
@@ -87,30 +91,12 @@ class crud
         }
     }
 
-
-    public function getAttendeeDetails($id)
+    public function deleteTicket($folio)
     {
         try {
-            $sql = "SELECT * FROM attendee a inner join specialties s on a.specialty_id = s.specialty_id WHERE attendee_id = :id";
+            $sql = "DELETE FROM tickets WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(':id', $id);
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    }
-
-
-
-    public function deleteAttendee($id)
-    {
-        try {
-            $sql = "DELETE FROM attendee WHERE attendee_id = :id";
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(':id', $id);
+            $stmt->bindparam(':folio', $folio);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {

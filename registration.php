@@ -4,7 +4,6 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-// $results = $crud->getSpecialties();
 ?>
 
 <h1 class="text-center">Registrar Ticket </h1>
@@ -29,6 +28,7 @@ require_once 'db/conn.php';
             <option value="Nokia">Nokia</option>
             <option value="Apple">Apple</option>
             <option value="Samsung">Samsung</option>
+            <option value="Otro">Otro</option>
         </select>
     </div>
     <div class="mb-3">
