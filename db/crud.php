@@ -80,7 +80,7 @@ class crud
     public function getTicketsHistory()
     {
         try {
-            $sql = "SELECT * FROM tickets WHERE estatus = 'abierto'";
+            $sql = "SELECT * FROM tickets";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
