@@ -10,12 +10,13 @@ class crud
         $this->db = $conn;
     }
 
-    // function to insert a new record into the attendee database
-    public function insertTickets($cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $actualizado, $estatus)
+
+    // function to insert a new record into the tickets database
+    public function insertTickets($cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion/*, $creacion*/, $estatus = "Abierto")
     {
         try {
             // define sql statement to be executed
-            $sql = "INSERT INTO tickets(cliente,correo,telefono,equipo,serie,servicio,estimado,descripcion,actualizado,estatus) VALUES (:cliente,:correo,:telefono,:equipo,:serie,:servicio,:estimado,:descripcion,:actualizado,:estatus)";
+            $sql = "INSERT INTO tickets(cliente,correo,telefono,equipo,serie,servicio,estimado,descripcion/*,creacion*/,estatus) VALUES (:cliente,:correo,:telefono,:equipo,:serie,:servicio,:estimado,:descripcion/*,:creacion*/,:estatus)";
             // prepare the sql statement for execution
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
@@ -27,7 +28,7 @@ class crud
             $stmt->bindparam(':servicio', $servicio);
             $stmt->bindparam(':estimado', $estimado);
             $stmt->bindparam(':descripcion', $descripcion);
-            $stmt->bindparam(':actualizado', $actualizado);
+            //$stmt->bindparam(':creacion', $creacion);
             $stmt->bindparam(':estatus', $estatus);
             // execute statement
             $stmt->execute();
@@ -38,10 +39,10 @@ class crud
         }
     }
 
-    public function editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $actualizado, $estatus)
+    public function editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $creacion, $estatus)
     {
         try {
-            $sql = "UPDATE `tickets` SET `cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`actualizado`=:actualizado,`estatus`=:estatus WHERE folio = :folio";
+            $sql = "UPDATE `tickets` SET `cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`creacion`=:creacion,`estatus`=:estatus WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
             $stmt->bindparam(':folio', $folio);
@@ -53,7 +54,7 @@ class crud
             $stmt->bindparam(':servicio', $servicio);
             $stmt->bindparam(':estimado', $estimado);
             $stmt->bindparam(':descripcion', $descripcion);
-            $stmt->bindparam(':actualizado', $actualizado);
+            $stmt->bindparam(':creacion', $creacion);
             $stmt->bindparam(':estatus', $estatus);
             // execute statement
             $stmt->execute();
@@ -64,10 +65,22 @@ class crud
         }
     }
 
-    public function getTickets()
+    public function getTicketsDashboard()
     {
         try {
             $sql = "SELECT * FROM tickets WHERE estatus = 'abierto'";
+            $result = $this->db->query($sql);
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getTicketsHistory()
+    {
+        try {
+            $sql = "SELECT * FROM tickets";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
