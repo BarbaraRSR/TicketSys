@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 04, 2022 at 12:38 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 13-11-2022 a las 21:04:36
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,65 +18,64 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ticketsys`
+-- Base de datos: `ticketsys`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `equipos`
+-- Estructura de tabla para la tabla `clients`
 --
 
-CREATE TABLE `equipos` (
-  `equipo_id` int(11) NOT NULL,
-  `tipo` varchar(100) NOT NULL,
-  `modelo` varchar(100) NOT NULL,
-  `serie` varchar(100) NOT NULL
+CREATE TABLE `clients` (
+  `clienteid` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `telefono` varchar(100) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `comentarios` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `equipos`
+-- Volcado de datos para la tabla `clients`
 --
 
-INSERT INTO `equipos` (`equipo_id`, `tipo`, `modelo`, `serie`) VALUES
-(1, 'Celular', 'Motorola', 'NS4851684514'),
-(2, 'Computadora', 'Lenovo', 'SN51654564151');
+INSERT INTO `clients` (`clienteid`, `nombre`, `apellido`, `telefono`, `correo`, `comentarios`) VALUES
+(1, 'Sakura', 'Kinomoto', '12345', 'sakura@cardcaptor.com', 'Comentarios por aquí.'),
+(2, 'Harry', 'Potter', '7891234', 'hp@magic.com', NULL),
+(3, 'Emmanuel', 'Gómez', '12345', 'emm@gomez.com', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets`
+-- Estructura de tabla para la tabla `tickets`
 --
 
 CREATE TABLE `tickets` (
   `folio` int(11) NOT NULL,
-  `cliente` varchar(100) NOT NULL,
-  `correo` varchar(100) NOT NULL,
-  `telefono` varchar(100) NOT NULL,
-  `equipo` varchar(100) NOT NULL,
+  `clienteid` int(11) NOT NULL,
+  `tipo` varchar(100) NOT NULL,
+  `marca` varchar(100) NOT NULL,
+  `modelo` varchar(100) NOT NULL,
   `serie` varchar(100) NOT NULL,
   `servicio` varchar(100) NOT NULL,
   `estimado` bigint(20) NOT NULL,
   `descripcion` text NOT NULL,
-  `creacion` date NOT NULL DEFAULT current_timestamp(),
-  `estatus` varchar(100) NOT NULL
+  `fecha` date NOT NULL DEFAULT current_timestamp(),
+  `estatus` enum('Abierto','Diagnóstico','Cerrado','Garantía','Cancelado') DEFAULT 'Abierto'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tickets`
+-- Volcado de datos para la tabla `tickets`
 --
 
-INSERT INTO `tickets` (`folio`, `cliente`, `correo`, `telefono`, `equipo`, `serie`, `servicio`, `estimado`, `descripcion`, `creacion`, `estatus`) VALUES
-(1, 'Joel', 'abc@gmail.com', '3366998855', 'Motorola', 'NR4564356456', 'Arreglo', 103, 'Reparacion de Bateria', '2022-10-11', 'Cerrado'),
-(2, 'Bruno', 'abc@gmail.com', '3366998855', 'Motorola', 'NR4564356456', 'Arreglo', 103, 'Reparacion de Bateria', '2022-10-11', 'Abierto'),
-(4, 'Joel', 'abc@gmail.com', '3366998855', 'Motorola', 'NR4564356456', 'Arreglo', 0, 'Actualización de Software', '0000-00-00', 'Abierto'),
-(5, 'Maria', 'adg@email.com', '3344223344', 'Motorola', 'ND354663565', 'Cambio', 651514, 'Cambio de Equipo', '2022-11-15', 'Cerrado'),
-(6, 'Josue', 'dcg@gmail.com', '23423423432', 'Nokia', 'NR4564356456', 'Cambio', 651514, 'Reparacion de Bateria', '0000-00-00', 'Abierto');
+INSERT INTO `tickets` (`folio`, `clienteid`, `tipo`, `marca`, `modelo`, `serie`, `servicio`, `estimado`, `descripcion`, `fecha`, `estatus`) VALUES
+(1, 1, 'Consola', 'Nintendo', 'Wii', '1234', 'Limpieza', 200, 'Limpieza de Wii.', '2022-11-13', 'Abierto');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
@@ -86,91 +85,70 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (4, 'admin', '80a19f669b02edfbc208a5386ab5036b'),
 (14, 'Adrian', 'password'),
-(15, 'Barbara', 'password'),
+(15, 'Barbara', '123'),
 (16, 'Pamela', 'password');
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `usuario_id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `usuarios`
---
-
-INSERT INTO `usuarios` (`usuario_id`, `username`, `password`) VALUES
-(1, 'Adrian', 'password'),
-(2, 'Barbara', 'password'),
-(3, 'Pamela', 'password');
-
---
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `equipos`
+-- Indices de la tabla `clients`
 --
-ALTER TABLE `equipos`
-  ADD PRIMARY KEY (`equipo_id`);
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`clienteid`),
+  ADD UNIQUE KEY `cod_unicos` (`telefono`,`correo`);
 
 --
--- Indexes for table `tickets`
+-- Indices de la tabla `tickets`
 --
 ALTER TABLE `tickets`
-  ADD PRIMARY KEY (`folio`);
+  ADD PRIMARY KEY (`folio`),
+  ADD KEY `clienteid` (`clienteid`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`usuario_id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `equipos`
+-- AUTO_INCREMENT de la tabla `clients`
 --
-ALTER TABLE `equipos`
-  MODIFY `equipo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `clients`
+  MODIFY `clienteid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tickets`
+-- AUTO_INCREMENT de la tabla `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- Restricciones para tablas volcadas
 --
-ALTER TABLE `usuarios`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Filtros para la tabla `tickets`
+--
+ALTER TABLE `tickets`
+  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`clienteid`) REFERENCES `clients` (`clienteid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
