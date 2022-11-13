@@ -26,6 +26,9 @@ ALTER TABLE `clients`
 ALTER TABLE `clients`
   MODIFY `clienteid` int(11) NOT NULL AUTO_INCREMENT;
 
+
+ALTER TABLE clients ADD CONSTRAINT cod_unicos UNIQUE (telefono, correo);
+
 INSERT INTO `tickets` (`nombre`, `apellido`, `correo`, `telefono`, `comentarios`) VALUES
 ('Juan', 'Perez', 'juan_perez@email.com', '3856748596', 'Algún comentario por aquí.'),
 ('Sakura', 'Kinomoto', 'sakura@gmail.com', '3366998855', ' '),
