@@ -10,7 +10,7 @@ $results = $crud->getTickets();
 ?>
 
 <h1>Tickets activos</h1>
-<a href="registration.php" class="btn btn-danger">Nuevo ticket</a>
+<a href="registration.php" class="btn btn-danger">Nuevo ticket</a>  <a href="newclient.php" class="btn btn-danger">Nuevo cliente</a>
 <br>
 <HR>
 
