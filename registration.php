@@ -4,6 +4,7 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
+// $results = $crud->getSpecialties();
 ?>
 
 <h3 class="text-center">Registrar Ticket </h3>
@@ -12,8 +13,7 @@ require_once 'db/conn.php';
   <div class="card border-0 shadow rounded-3 my-5">
     <div class="card-body p-4 p-sm-5">
         <!-- Registrar datos del cliente -->
-        <h4 class="card-title text-center mb-5 fw-light fs-5">CLIENTE</h4>
-
+        <h4 class="card-title text-center mb-5 fw-light fs-5">Cliente</h4>
         <form method="post" action="success.php">
             <div class="row">
                 <div class="form-floating mb-3">
@@ -35,31 +35,39 @@ require_once 'db/conn.php';
         <!-- Información del equipo -->
         <h4 class="card-title text-center mb-5 fw-light fs-5">Información del equipo</h4>
             <div class="row">
-                <!-- Equipo y serie -->
+                <!-- Equipo -->
                 <div class="col"><div class="form-floating mb-3">
-                    <select type="text" name="equipo" class="form-select" id="equipo" aria-label="Default select example">
+                    <select type="text" name="tipo" class="form-select" id="tipo" aria-label="Default select example">
                         <option value=""></option>
-                        <option value="Motorola">Motorola</option>
-                        <option value="Nokia">Nokia</option>
-                        <option value="Apple">Apple</option>
-                        <option value="Samsung">Samsung</option>
+                        <option value="Laptop o PC">Laptop o PC</option>
+                        <option value="Smartphone">Smartphone</option>
+                        <option value="Tableta">Tableta</option>
+                        <option value="Consola">Consola</option>
                         <option value="Otro">Otro</option>
                     </select>
-                    <label for="equipo">Equipo</label>
+                    <label for="equipo">Tipo*</label>
                 </div></div>
                 <div class="col"><div class="form-floating mb-3">
-                    <input required type="text" name="serie" class="form-control" id="serie">
-                    <label for="serie">Número de serie</label>
+                    <input required type="text" name="marca" class="form-control" id="marca">
+                    <label for="marca">Marca*</label>
+                </div></div>
+                <div class="col"><div class="form-floating mb-3">
+                    <input required type="text" name="modelo" class="form-control" id="modelo">
+                    <label for="modelo">Modelo*</label>
                 </div></div>
             </div>
             <div class="row">
-                <!-- Servicio y costo -->
+                <!-- Serie, servicio y costo -->
+                <div class="col"><div class="form-floating mb-3">
+                    <input required type="text" name="serie" class="form-control" id="serie">
+                    <label for="serie">Número de serie*</label>
+                </div></div>
                 <div class="col"><div class="form-floating mb-3">
                     <input required type="text" name="servicio" class="form-control" id="servicio">
                     <label for="servicio">Servicio*</label>
                 </div></div>
                 <div class="col"><div class="form-floating mb-3">
-                    <input type="number" name="estimado" class="form-control" id="estimado">
+                    <input type="text" name="estimado" class="form-control" id="estimado">
                     <label for="estimado">Costo estimado</label>
                 </div></div>
                 <!-- Descripción -->
@@ -69,19 +77,6 @@ require_once 'db/conn.php';
                 </div>
             </div>
 
-            <!--
-            <div class=" mb-3">
-                <label for="actualizado" class="form-label">Actualizado</label>
-                <input type="date" class="form-control" id="actualizado" name="actualizado">
-            </div>
-            <div class="mb-3">
-                <label for="estatus" class="form-label">Estatus</label>
-                <select class="form-select" aria-label="Default select example" id="estatus" name="estatus">
-                    <option value="Abierto">Abierto</option>
-                    <option value="Cerrado">Cerrado</option>
-            </select>
--->
-    </div>
 
             <!-- Botones -->
             <div class="text-center">
