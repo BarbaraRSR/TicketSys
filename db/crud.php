@@ -84,6 +84,18 @@ class crud
         }
     }
 
+    public function getHistory()
+    {
+        try {
+            $sql = "SELECT * FROM tickets";
+            $result = $this->db->query($sql);
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function getClientDetails($clienteid)
     {
         try {
