@@ -86,7 +86,9 @@ class crud
     public function getHistory()
     {
         try {
-            $sql = "SELECT * FROM tickets";
+            $sql = "SELECT folio, fecha, tipo, marca, modelo, servicio, estimado, estatus, clients.clienteid, clients.nombre, clients.apellido
+                        FROM tickets
+                        INNER JOIN clients ON tickets.clienteid=clients.clienteid;";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
