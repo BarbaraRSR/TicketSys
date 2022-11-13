@@ -11,6 +11,29 @@ class crud
     }
 
     // function to insert a new record into the attendee database
+    public function insertClients($nombre, $apellido, $telefono, $correo, $comentarios)
+    {
+        try {
+            // define sql statement to be executed
+            $sql = "INSERT INTO clients(nombre,apellido,telefono,correo,comentarios)
+                    VALUES (:nombre,:apellido,:telefono,:correo,:comentarios)";
+            // prepare the sql statement for execution
+            $stmt = $this->db->prepare($sql);
+            //bind all placeholders to the actual values
+            $stmt->bindparam(':nombre', $nombre);
+            $stmt->bindparam(':apellido', $apellido);
+            $stmt->bindparam(':telefono', $telefono);
+            $stmt->bindparam(':correo', $correo);
+            $stmt->bindparam(':comentarios', $comentarios);
+            // execute statement
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function insertTickets($clienteid, $tipo, $marca, $modelo, $serie, $servicio, $estimado, $descripcion)
     {
         try {
@@ -19,7 +42,7 @@ class crud
             // prepare the sql statement for execution
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
-            $stmt->bindparam(':clienteid', $cliente);
+            $stmt->bindparam(':clienteid', $clienteid);
             $stmt->bindparam(':tipo', $correo);
             $stmt->bindparam(':marca', $telefono);
             $stmt->bindparam(':modelo', $equipo);
@@ -36,29 +59,6 @@ class crud
         }
     }
 
-    /* ESTO NO PARECE FORMAR PARTE DE NUESTRO SISTEMA
-    public function editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty)
-    {
-        try {
-            $sql = "UPDATE `attendee` SET `firstname`=:fname,`lastname`=:lname,`dateofbirth`=:dob,`emailaddress`=:email,`contactnumber`=:contact,`specialty_id`=:specialty WHERE attendee_id = :id";
-            $stmt = $this->db->prepare($sql);
-            //bind all placeholders to the actual values
-            $stmt->bindparam(':id', $id);
-            $stmt->bindparam(':fname', $fname);
-            $stmt->bindparam(':lname', $lname);
-            $stmt->bindparam(':dob', $dob);
-            $stmt->bindparam(':email', $email);
-            $stmt->bindparam(':contact', $contact);
-            $stmt->bindparam(':specialty', $specialty);
-            // execute statement
-            $stmt->execute();
-            return true;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    } */
-
     public function getClients()
     {
         try {
@@ -74,7 +74,10 @@ class crud
     public function getTickets()
     {
         try {
-            $sql = "SELECT * FROM tickets WHERE estatus = 'abierto'";
+            $sql = "SELECT folio, fecha, tipo, marca, modelo, servicio, clients.clienteid, clients.nombre, clients.apellido
+                    FROM tickets
+                    INNER JOIN clients ON tickets.clienteid=clients.clienteid
+                    WHERE estatus = 'abierto'";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
@@ -115,7 +118,9 @@ class crud
     public function getTicketDetails($folio)
     {
         try {
-            $sql = "SELECT * FROM tickets WHERE folio = :folio";
+            $sql = "SELECT folio, fecha, tipo, marca, modelo, serie, descripcion, servicio, estimado, estatus, clients.clienteid, clients.nombre, clients.apellido, clients.telefono, clients.correo, clients.comentarios
+            FROM tickets
+            INNER JOIN clients ON tickets.clienteid=clients.clienteid;";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':folio', $folio);
             $stmt->execute();
@@ -126,23 +131,6 @@ class crud
             return false;
         }
     }
-
-
-    public function getAttendeeDetails($id)
-    {
-        try {
-            $sql = "SELECT * FROM attendee a inner join specialties s on a.specialty_id = s.specialty_id WHERE attendee_id = :id";
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(':id', $id);
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    }
-
 
 
     public function deleteAttendee($id)
