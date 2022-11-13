@@ -11,24 +11,22 @@ class crud
     }
 
     // function to insert a new record into the attendee database
-    public function insertTickets($cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $actualizado, $estatus)
+    public function insertTickets($clienteid, $tipo, $marca, $modelo, $serie, $servicio, $estimado, $descripcion)
     {
         try {
             // define sql statement to be executed
-            $sql = "INSERT INTO tickets(cliente,correo,telefono,equipo,serie,servicio,estimado,descripcion,actualizado,estatus) VALUES (:cliente,:correo,:telefono,:equipo,:serie,:servicio,:estimado,:descripcion,:actualizado,:estatus)";
+            $sql = "INSERT INTO tickets(clienteid,tipo,marca,modelo,serie,servicio,estimado,descripcion) VALUES (:clienteid,:tipo,:marca,:modelo,:serie,:servicio,:estimado,:descripcion)";
             // prepare the sql statement for execution
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
-            $stmt->bindparam(':cliente', $cliente);
-            $stmt->bindparam(':correo', $correo);
-            $stmt->bindparam(':telefono', $telefono);
-            $stmt->bindparam(':equipo', $equipo);
+            $stmt->bindparam(':clienteid', $cliente);
+            $stmt->bindparam(':tipo', $correo);
+            $stmt->bindparam(':marca', $telefono);
+            $stmt->bindparam(':modelo', $equipo);
             $stmt->bindparam(':serie', $serie);
             $stmt->bindparam(':servicio', $servicio);
             $stmt->bindparam(':estimado', $estimado);
             $stmt->bindparam(':descripcion', $descripcion);
-            $stmt->bindparam(':actualizado', $actualizado);
-            $stmt->bindparam(':estatus', $estatus);
             // execute statement
             $stmt->execute();
             return true;
@@ -38,6 +36,7 @@ class crud
         }
     }
 
+    /* ESTO NO PARECE FORMAR PARTE DE NUESTRO SISTEMA
     public function editAttendee($id, $fname, $lname, $dob, $email, $contact, $specialty)
     {
         try {
@@ -58,7 +57,7 @@ class crud
             echo $e->getMessage();
             return false;
         }
-    }
+    } */
 
     public function getClients()
     {
@@ -158,6 +157,7 @@ class crud
         }
     }
 
+    /* ESTO NO PARECE SER PARTE DE NUESTRO SISTEMA
     public function getSpecialties()
     {
         try {
@@ -168,7 +168,7 @@ class crud
             echo $e->getMessage();
             return false;
         }
-    }
+    } 
 
     public function getSpecialtyById($id)
     {
@@ -183,7 +183,7 @@ class crud
             echo $e->getMessage();
             return false;
         }
-    }
+    } */
 }
 
 ?>
