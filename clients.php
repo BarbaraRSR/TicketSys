@@ -10,6 +10,7 @@ $results = $crud->getClients();
 ?>
 
 <h2>Directorio de clientes</h2>
+<a href="newclient.php" class="btn btn-danger">Nuevo cliente</a>
 <br>
 <hr>
 
