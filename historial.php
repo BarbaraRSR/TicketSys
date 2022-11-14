@@ -5,8 +5,10 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
+
 // Get all attendees
-$results = $crud->getHistory();
+$results = $crud->getHistory($crud->getHistoryAll(), $pagina);
 ?>
 
 <h2>Historial de equipos</h2>
@@ -47,5 +49,6 @@ $results = $crud->getHistory();
     </tbody>
 </table>
 
+<?=$crud->getPaginator("historial.php");?>
 
 <?php require_once 'includes/footer.php'; ?>

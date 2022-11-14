@@ -5,8 +5,10 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
+
 // Get all attendees
-$results = $crud->getTickets();
+$results = $crud->getTickets($crud->getTicketsAll(), $pagina);
 ?>
 
 <h1>Tickets activos</h1>
@@ -43,5 +45,6 @@ $results = $crud->getTickets();
     </tbody>
 </table>
 
+<?=$crud->getPaginator("dashboard.php");?>
 
 <?php require_once 'includes/footer.php'; ?>

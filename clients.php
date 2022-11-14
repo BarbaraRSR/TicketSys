@@ -5,8 +5,10 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
+
 // Get all attendees
-$results = $crud->getClients();
+$results = $crud->getClients($crud->getClientsAll(), $pagina);
 ?>
 
 <h2>Directorio de clientes</h2>
@@ -46,5 +48,6 @@ $results = $crud->getClients();
     </tbody>
 </table>
 
+<?=$crud->getPaginator("clients.php");?>
 
 <?php require_once 'includes/footer.php'; ?>
