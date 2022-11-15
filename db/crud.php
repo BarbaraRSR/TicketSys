@@ -16,7 +16,7 @@ class crud
     {
         try {
             // define sql statement to be executed
-            $sql = "INSERT INTO tickets(cliente,correo,telefono,equipo,serie,servicio,estimado,descripcion/*,creacion*/,estatus) VALUES (:cliente,:correo,:telefono,:equipo,:serie,:servicio,:estimado,:descripcion/*,:creacion*/,:estatus)";
+            $sql = "INSERT INTO tickets2(cliente,correo,telefono,equipo,serie,servicio,estimado,descripcion/*,creacion*/,estatus) VALUES (:cliente,:correo,:telefono,:equipo,:serie,:servicio,:estimado,:descripcion/*,:creacion*/,:estatus)";
             // prepare the sql statement for execution
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
@@ -42,7 +42,7 @@ class crud
     public function editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $creacion, $estatus)
     {
         try {
-            $sql = "UPDATE `tickets` SET `cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`creacion`=:creacion,`estatus`=:estatus WHERE folio = :folio";
+            $sql = "UPDATE `tickets2` SET `cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`creacion`=:creacion,`estatus`=:estatus WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             //bind all placeholders to the actual values
             $stmt->bindparam(':folio', $folio);
@@ -68,7 +68,7 @@ class crud
     public function getTicketsDashboard()
     {
         try {
-            $sql = "SELECT * FROM tickets WHERE estatus = 'abierto'";
+            $sql = "SELECT * FROM tickets2 WHERE estatus = 'abierto'";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
@@ -80,7 +80,7 @@ class crud
     public function getTicketsHistory()
     {
         try {
-            $sql = "SELECT * FROM tickets";
+            $sql = "SELECT * FROM tickets2";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
@@ -92,7 +92,7 @@ class crud
     public function getTicketDetails($folio)
     {
         try {
-            $sql = "SELECT * FROM tickets WHERE folio = :folio";
+            $sql = "SELECT * FROM tickets2 WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':folio', $folio);
             $stmt->execute();
@@ -107,7 +107,7 @@ class crud
     public function deleteTicket($folio)
     {
         try {
-            $sql = "DELETE FROM tickets WHERE folio = :folio";
+            $sql = "DELETE FROM tickets2 WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':folio', $folio);
             $stmt->execute();
@@ -117,6 +117,35 @@ class crud
             return false;
         }
     }
+
+    public function getDevices()
+    {
+        try {
+            $sql = "SELECT * FROM `devices`";
+            $result = $this->db->query($sql);
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getDevicesById($id)
+    {
+        try {
+            $sql = "SELECT * FROM `devices` where equipo_id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    /*
 
     public function getSpecialties()
     {
@@ -129,6 +158,8 @@ class crud
             return false;
         }
     }
+
+
 
     public function getSpecialtyById($id)
     {
@@ -144,6 +175,8 @@ class crud
             return false;
         }
     }
+
+    */
 }
 
 ?>

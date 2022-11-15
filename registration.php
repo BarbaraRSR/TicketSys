@@ -4,6 +4,8 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
+$results = $crud->getDevices();
+
 ?>
 
 <h3 class="text-center">Registrar Ticket </h3>
@@ -38,12 +40,17 @@ require_once 'db/conn.php';
                 <!-- Equipo y serie -->
                 <div class="col"><div class="form-floating mb-3">
                     <select type="text" name="equipo" class="form-select" id="equipo" aria-label="Default select example">
+                        <?php while ($r = $results->fetch(PDO::FETCH_ASSOC)) { ?>
+                            <option value="<?php echo $r['equipo_id'] ?>"><?php echo $r['modelo']; ?></option>
+                        <?php } ?>
+                        <!--
                         <option value=""></option>
                         <option value="Motorola">Motorola</option>
                         <option value="Nokia">Nokia</option>
                         <option value="Apple">Apple</option>
                         <option value="Samsung">Samsung</option>
                         <option value="Otro">Otro</option>
+                        -->
                     </select>
                     <label for="equipo">Equipo</label>
                 </div></div>

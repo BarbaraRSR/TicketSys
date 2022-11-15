@@ -15,7 +15,7 @@ $results = $crud->getTicketsDashboard();
     <thead>
         <tr>
             <th scope="col">Folio</th>
-            <th scope="col">Antigüedad</th>
+            <th scope="col">Fecha</th>
             <th scope="col">Cliente</th>
             <th scope="col">Equipo</th>
             <th scope="col">Servicio</th>
