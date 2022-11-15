@@ -4,7 +4,7 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-$results = $crud->getDevices();
+$results = $crud->getClients();
 
 ?>
 
@@ -18,8 +18,12 @@ $results = $crud->getDevices();
         <form method="post" action="ticketnewsuccess.php">
             <div class="row">
                 <div class="form-floating mb-3">
-                    <input required type="text" name="cliente" class="form-control" id="cliente">
-                    <label for="cliente">&nbsp; Nombre del cliente*</label>
+                    <input required type="text" name="nombre" class="form-control" id="nombre">
+                    <label for="nombre">&nbsp; Nombre del cliente*</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input required type="text" name="apellido" class="form-control" id="apellido">
+                    <label for="apellido">&nbsp; Apellido del cliente*</label>
                 </div>
                 <div class="col"><div class="form-floating mb-3">
                     <input required type="text" name="telefono" class="form-control" id="telefono">

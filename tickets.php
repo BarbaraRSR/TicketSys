@@ -11,7 +11,7 @@
 </style>
 
 <?php
-$title = 'Historial';
+$title = 'Tickets';
 
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
