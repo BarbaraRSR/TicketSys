@@ -65,6 +65,20 @@ class crud
         }
     }
 
+    // NEW
+    public function getTickets()
+    {
+        try {
+            $sql = "SELECT * FROM tickets t inner join clients c on t.cliente_id = c.cliente_id WHERE estatus = 'abierto'";
+            $resultado = $this->db->query($sql);
+            return $resultado;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+     // OLD
     public function getTicketsDashboard()
     {
         try {
@@ -77,10 +91,11 @@ class crud
         }
     }
 
+    // NEW
     public function getTicketsHistory()
     {
         try {
-            $sql = "SELECT * FROM tickets2";
+            $sql = "SELECT * FROM tickets t inner join clients c on t.cliente_id = c.cliente_id";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
@@ -89,6 +104,24 @@ class crud
         }
     }
 
+    // NEW
+    public function getTicketDetails($folio)
+    {
+        try {
+            $sql = "SELECT * FROM tickets t inner join clients c on t.cliente_id = c.cliente_id WHERE folio = :folio";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':folio', $folio);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    // OLD
+    /*
     public function getTicketDetails($folio)
     {
         try {
@@ -103,6 +136,7 @@ class crud
             return false;
         }
     }
+    */
 
     public function deleteTicket($folio)
     {
@@ -110,6 +144,94 @@ class crud
             $sql = "DELETE FROM tickets2 WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':folio', $folio);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    // NEW
+    public function insertClient($nombre, $apellido, $telefono, $correo, $comentarios)
+    {
+        try {
+            // define sql statement to be executed
+            $sql = "INSERT INTO clients(nombre,apellido,telefono,correo,comentarios)
+                    VALUES (:nombre,:apellido,:telefono,:correo,:comentarios)";
+            // prepare the sql statement for execution
+            $stmt = $this->db->prepare($sql);
+            //bind all placeholders to the actual values
+            $stmt->bindparam(':nombre', $nombre);
+            $stmt->bindparam(':apellido', $apellido);
+            $stmt->bindparam(':telefono', $telefono);
+            $stmt->bindparam(':correo', $correo);
+            $stmt->bindparam(':comentarios', $comentarios);
+            // execute statement
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function editClient($cliente_id, $nombre, $apellido, $telefono, $correo, $comentarios)
+    {
+        try {
+            $sql = "UPDATE `clients` SET `nombre`=:nombre,`apellido`=:apellido,`telefono`=:telefono,`correo`=:correo,`comentarios`=:comentarios WHERE cliente_id = :cliente_id";
+            $stmt = $this->db->prepare($sql);
+            //bind all placeholders to the actual values
+            $stmt->bindparam(':cliente_id', $cliente_id);
+            $stmt->bindparam(':nombre', $nombre);
+            $stmt->bindparam(':apellido', $apellido);
+            $stmt->bindparam(':telefono', $telefono);
+            $stmt->bindparam(':correo', $correo);
+            $stmt->bindparam(':comentarios', $comentarios);
+            // execute statement
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+        // NEW
+    public function getClients()
+    {
+        try {
+            $sql = "SELECT * FROM clients";
+            $result = $this->db->query($sql);
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    // NEW
+    public function getClientDetails($cliente_id)
+    {
+        try {
+            $sql = "SELECT * FROM clients WHERE cliente_id = :cliente_id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':cliente_id', $cliente_id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deleteClient($cliente_id)
+    {
+        try {
+            $sql = "DELETE FROM clients WHERE cliente_id = :cliente_id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':cliente_id', $cliente_id);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {

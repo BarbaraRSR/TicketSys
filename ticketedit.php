@@ -7,7 +7,7 @@ require_once "db/conn.php";
 if (!isset($_GET['folio'])) {
     //echo 'error';
     include 'includes/errormessage.php';
-    header("Location: dashboard.php");
+    header("Location: inicio.php");
 } else {
     $folio = $_GET['folio'];
     $ticket = $crud->getTicketDetails($folio);
@@ -16,7 +16,7 @@ if (!isset($_GET['folio'])) {
 
     <h1 class="text-center">Editar Ticket </h1>
     
-    <form method="post" action="editpost.php">
+    <form method="post" action="ticketeditpost.php">
         <input type="hidden" name="folio" value="<?php echo $ticket['folio'] ?>">
         <div class="mb-3">
             <label for="cliente" class="form-label">Cliente</label>
@@ -69,8 +69,8 @@ if (!isset($_GET['folio'])) {
             </select>
         </div>
         <div class="d-grid gap-2">
-            <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar Registro</button>
-            <a href="dashboard.php" class="btn btn-danger">Cancelar</a>
+            <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar</button>
+            <a href="inicio.php" class="btn btn-danger">Cancelar</a>
         </div>
     </form>
     

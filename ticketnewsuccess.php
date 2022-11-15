@@ -19,7 +19,8 @@ if (isset($_POST['submit'])) {
     //$estatus = $_POST['estatus'];
 
     //Call function to insert and track if success or not
-$isSuccess = $crud->insertTickets($cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, /*$actualizado, $estatus*/);
+$isSuccess = $crud->insertTickets($cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, //$actualizado, $estatus
+);
 
     if ($isSuccess) {
         include 'includes/successmessage.php';
@@ -27,6 +28,7 @@ $isSuccess = $crud->insertTickets($cliente, $correo, $telefono, $equipo, $serie,
         include 'includes/errormessage.php';
     }
 }
+
 ?>
 
 <?php

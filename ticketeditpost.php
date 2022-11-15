@@ -1,4 +1,5 @@
 <?php
+
 require_once 'db/conn.php';
 //Get values from post operation
 if (isset($_POST['submit'])) {
@@ -20,7 +21,7 @@ if (isset($_POST['submit'])) {
     $result = $crud->editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $creacion, $estatus);
     //Redirect to index.php
     if ($result) {
-        header("Location: dashboard.php");
+        header("Location: inicio.php");
     } else {
         //echo 'error';
         include 'includes/errormessage.php';
