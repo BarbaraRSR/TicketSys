@@ -37,7 +37,7 @@ include_once 'includes/session.php' ?>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mr-auto">
                         <a class="nav-link" href="inicio.php">Inicio</a>
-                        <a class="nav-link" href="tickets.php">Historial</a>
+                        <a class="nav-link" href="tickets.php">Tickets</a>
                         <a class="nav-link" href="clients.php">Clientes</a>
                         
                         

@@ -3,8 +3,6 @@ $title = 'New Client';
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
-
-// $results = $crud->getSpecialties();
 ?>
 
 <h3 class="text-center">Registrar Cliente </h3>

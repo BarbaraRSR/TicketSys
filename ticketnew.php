@@ -4,7 +4,7 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-$results = $crud->getClients();
+$results1 = $crud->getClients();
 
 ?>
 
@@ -14,8 +14,23 @@ $results = $crud->getClients();
   <div class="card border-0 shadow rounded-3 my-5">
     <div class="card-body p-4 p-sm-5">
         <!-- Registrar datos del cliente -->
-        <h4 class="card-title text-center mb-5 fw-light fs-5">Cliente</h4>
+        
         <form method="post" action="ticketnewsuccess.php">
+
+        <h4 class="card-title text-center mb-2 fw-light fs-5">Cliente</h4>
+
+        <div class="mb-1">
+        <label for="cliente" class="form-label"></label>
+        <select class="form-select" aria-label="Default select example" id="cliente" name="cliente">
+                <option value=""></option>
+                <?php while ($r1 = $results1->fetch(PDO::FETCH_ASSOC)) { $cliente = $r1['nombre'] . " ". $r1['apellido'];?>
+                <option value="<?php echo $r1['cliente_id'] ?>"><?php echo $cliente; ?></option>
+            <?php } ?>
+
+        </select>
+    </div>
+
+<!--
             <div class="row">
                 <div class="form-floating mb-3">
                     <input required type="text" name="nombre" class="form-control" id="nombre">
@@ -34,6 +49,8 @@ $results = $crud->getClients();
                     <label for="correo">Correo electrónico</label>
                 </div></div>
             </div>
+
+-->
 
         <hr class="my-4">
 
@@ -82,11 +99,9 @@ $results = $crud->getClients();
                 </div>
             </div>
 
-
             <!-- Botones -->
             <div class="text-center">
-                <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar</button>
-                &nbsp; &nbsp;
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Confirmar</button>
                 <a href="inicio.php" class="btn btn-danger">Cancelar</a>
             </div>
         </form>

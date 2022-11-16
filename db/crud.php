@@ -10,19 +10,16 @@ class crud
         $this->db = $conn;
     }
 
-// NEW
-public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $marca, $modelo, $serie, $servicio, $estimado, $descripcion/*, $fecha*/, $estatus = "Abierto")
+/////////////
+/* TICKETS */
+///////////// 
+
+public function insertTicket($cliente, $tipo, $marca, $modelo, $serie, $servicio, $estimado, $descripcion/*, $fecha*/, $estatus = "Abierto")
 {
     try {
-        // define sql statement to be executed
-        $sql = "INSERT INTO tickets(nombre, apellido, telefono, correo, tipo, marca, modelo, serie, servicio,estimado,descripcion/*,fecha*/,estatus) VALUES (:nombre, :apellido, :telefono, :correo, :tipo, :marca, :modelo, :serie, :servicio,:estimado,:descripcion/*,:fecha*/,:estatus)";
-        // prepare the sql statement for execution
+        $sql = "INSERT INTO tickets(cliente_id, tipo, marca, modelo, serie, servicio,estimado,descripcion/*,fecha*/,estatus) VALUES (:cliente, :tipo, :marca, :modelo, :serie, :servicio,:estimado,:descripcion/*,:fecha*/,:estatus)";
         $stmt = $this->db->prepare($sql);
-        //bind all placeholders to the actual values
-        $stmt->bindparam(':nombre', $nombre);
-        $stmt->bindparam(':apellido', $apellido);
-        $stmt->bindparam(':telefono', $telefono);
-        $stmt->bindparam(':correo', $correo);
+        $stmt->bindparam(':cliente', $cliente);
         $stmt->bindparam(':tipo', $tipo);
         $stmt->bindparam(':marca', $marca);
         $stmt->bindparam(':modelo', $modelo);
@@ -32,7 +29,6 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         $stmt->bindparam(':descripcion', $descripcion);
         //$stmt->bindparam(':fecha', $fecha);
         $stmt->bindparam(':estatus', $estatus);
-        // execute statement
         $stmt->execute();
         return true;
     } catch (PDOException $e) {
@@ -41,25 +37,22 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
     }
 }
 
-
-    public function editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $creacion, $estatus)
+    public function editTicket($folio, $cliente, $tipo, $marca, $modelo, $serie, $servicio, $estimado, $descripcion, $fecha, $estatus)
     {
         try {
-            $sql = "UPDATE `tickets2` SET `cliente`=:cliente,`correo`=:correo,`telefono`=:telefono,`equipo`=:equipo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`creacion`=:creacion,`estatus`=:estatus WHERE folio = :folio";
+            $sql = "UPDATE `tickets` SET `cliente_id`=:cliente,`tipo`=:tipo,`marca`=:marca,`modelo`=:modelo,`serie`=:serie,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`fecha`=:fecha,`estatus`=:estatus WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
-            //bind all placeholders to the actual values
             $stmt->bindparam(':folio', $folio);
             $stmt->bindparam(':cliente', $cliente);
-            $stmt->bindparam(':correo', $correo);
-            $stmt->bindparam(':telefono', $telefono);
-            $stmt->bindparam(':equipo', $equipo);
+            $stmt->bindparam(':tipo', $tipo);
+            $stmt->bindparam(':marca', $marca);
+            $stmt->bindparam(':modelo', $modelo);
             $stmt->bindparam(':serie', $serie);
             $stmt->bindparam(':servicio', $servicio);
             $stmt->bindparam(':estimado', $estimado);
             $stmt->bindparam(':descripcion', $descripcion);
-            $stmt->bindparam(':creacion', $creacion);
+            $stmt->bindparam(':fecha', $fecha);
             $stmt->bindparam(':estatus', $estatus);
-            // execute statement
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
@@ -81,21 +74,8 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         }
     }
 
-     // OLD
-    public function getTicketsDashboard()
-    {
-        try {
-            $sql = "SELECT * FROM tickets2 WHERE estatus = 'abierto'";
-            $result = $this->db->query($sql);
-            return $result;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    }
-
     // NEW
-    public function getTicketsHistory()
+    public function getTicketsALL()
     {
         try {
             $sql = "SELECT * FROM tickets t inner join clients c on t.cliente_id = c.cliente_id";
@@ -123,28 +103,10 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         }
     }
 
-    // OLD
-    /*
-    public function getTicketDetails($folio)
-    {
-        try {
-            $sql = "SELECT * FROM tickets2 WHERE folio = :folio";
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(':folio', $folio);
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    }
-    */
-
     public function deleteTicket($folio)
     {
         try {
-            $sql = "DELETE FROM tickets2 WHERE folio = :folio";
+            $sql = "DELETE FROM tickets WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':folio', $folio);
             $stmt->execute();
@@ -155,22 +117,21 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         }
     }
 
-    // NEW
+/////////////
+/* CLIENTS */
+///////////// 
+
     public function insertClient($nombre, $apellido, $telefono, $correo, $comentarios)
     {
         try {
-            // define sql statement to be executed
             $sql = "INSERT INTO clients(nombre,apellido,telefono,correo,comentarios)
                     VALUES (:nombre,:apellido,:telefono,:correo,:comentarios)";
-            // prepare the sql statement for execution
             $stmt = $this->db->prepare($sql);
-            //bind all placeholders to the actual values
             $stmt->bindparam(':nombre', $nombre);
             $stmt->bindparam(':apellido', $apellido);
             $stmt->bindparam(':telefono', $telefono);
             $stmt->bindparam(':correo', $correo);
             $stmt->bindparam(':comentarios', $comentarios);
-            // execute statement
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
@@ -184,14 +145,12 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         try {
             $sql = "UPDATE `clients` SET `nombre`=:nombre,`apellido`=:apellido,`telefono`=:telefono,`correo`=:correo,`comentarios`=:comentarios WHERE cliente_id = :cliente_id";
             $stmt = $this->db->prepare($sql);
-            //bind all placeholders to the actual values
             $stmt->bindparam(':cliente_id', $cliente_id);
             $stmt->bindparam(':nombre', $nombre);
             $stmt->bindparam(':apellido', $apellido);
             $stmt->bindparam(':telefono', $telefono);
             $stmt->bindparam(':correo', $correo);
             $stmt->bindparam(':comentarios', $comentarios);
-            // execute statement
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
@@ -200,7 +159,6 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         }
     }
 
-        // NEW
     public function getClients()
     {
         try {
@@ -213,7 +171,6 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         }
     }
 
-    // NEW
     public function getClientDetails($cliente_id)
     {
         try {
@@ -243,6 +200,8 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         }
     }
 
+/*
+
     public function getDevices()
     {
         try {
@@ -270,38 +229,8 @@ public function insertTicket($nombre, $apellido, $telefono, $correo, $tipo, $mar
         }
     }
 
-    /*
+*/
 
-    public function getSpecialties()
-    {
-        try {
-            $sql = "SELECT * FROM `specialties`";
-            $result = $this->db->query($sql);
-            return $result;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    }
-
-
-
-    public function getSpecialtyById($id)
-    {
-        try {
-            $sql = "SELECT * FROM `specialties` where specialty_id = :id";
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(':id', $id);
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
-    }
-
-    */
 }
 
 ?>

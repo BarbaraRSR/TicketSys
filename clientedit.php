@@ -5,13 +5,11 @@ require_once 'includes/auth_check.php';
 require_once "db/conn.php";
 
 if (!isset($_GET['cliente_id'])) {
-    //echo 'error';
     include 'includes/errormessage.php';
     header("Location: inicio.php");
 } else {
     $cliente_id = $_GET['cliente_id'];
     $ticket = $crud->getClientDetails($cliente_id);
-
     ?>
 
 <h3 class="text-center">Editar Cliente </h3>
@@ -68,8 +66,6 @@ if (!isset($_GET['cliente_id'])) {
   </div>
 </div>
 
-    
-    
     <?php } ?>
 
 <?php require_once "includes/footer.php"; ?>

@@ -6,19 +6,19 @@ if (isset($_POST['submit'])) {
     //extract values from the $_POST array
     $folio = $_POST['folio'];
     $cliente = $_POST['cliente'];
-    $correo = $_POST['correo'];
-    $telefono = $_POST['telefono'];
-    $equipo = $_POST['equipo'];
+    $tipo = $_POST['tipo'];
+    $marca = $_POST['marca'];
+    $modelo = $_POST['modelo'];
     $serie = $_POST['serie'];
     $servicio = $_POST['servicio'];
     $estimado = $_POST['estimado'];
     $descripcion = $_POST['descripcion'];
-    $creacion = $_POST['creacion'];
+    $fecha = $_POST['fecha'];
     $estatus = $_POST['estatus'];
 
 
     //Call Crud function
-    $result = $crud->editTicket($folio, $cliente, $correo, $telefono, $equipo, $serie, $servicio, $estimado, $descripcion, $creacion, $estatus);
+    $result = $crud->editTicket($folio, $cliente, $tipo, $marca, $modelo, $serie, $servicio, $estimado, $descripcion, $fecha, $estatus);
     //Redirect to index.php
     if ($result) {
         header("Location: inicio.php");

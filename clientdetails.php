@@ -5,9 +5,8 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-// Get attendee by Id
 if (!isset($_GET['cliente_id'])) {
-    echo "<h1 class='text-danger'>Please check details and try again</h1>";
+    echo "<h1 class='text-danger'>Por favor revise la información y vuelva a intentarlo</h1>";
 } else {
     $cliente_id = $_GET['cliente_id'];
     $result = $crud->getClientDetails($cliente_id); 
@@ -33,7 +32,6 @@ if (!isset($_GET['cliente_id'])) {
     <br>
     <a href="clients.php" class="btn btn-info">Regreso</a>
     <a href="edit.php?cliente_id=<?php echo $result['cliente_id'] ?>" class="btn btn-warning">Editar</a>
-    <!-- TODAVÍA NO FUNCIONA EDITAR O BORRAR -->
     <a onclick="return confirm('Proceder a borrar este ticket permanentemente?');" href="delete.php?folio=<?php echo $result['folio'] ?>" class="btn btn-danger">Borrar</a>
 
 <?php } ?>

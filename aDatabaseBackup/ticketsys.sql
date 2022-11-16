@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2022 at 10:34 PM
+-- Generation Time: Nov 16, 2022 at 03:40 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -46,7 +46,7 @@ INSERT INTO `clients` (`cliente_id`, `nombre`, `apellido`, `telefono`, `correo`,
 (3, 'Emmanuel', 'Gómez', '12345', 'emm@gomez.com', ''),
 (4, 'Bruno', 'Bucciarati', '3366998855', 'abc@gmail.com', 'El comentario'),
 (5, 'Mista', 'Guido', '1122334455', 'guido@jj.com', 'Nuevo Comentario'),
-(7, 'Fugo', 'Pannacotta', '23423423432', 'Pannacotta@jj.com', 'Este es un Comentario nuevo');
+(7, 'Fugo', 'Pannacotta', '23423423432', 'pannacotta@jj.com', 'Modificacion Realizada Actualmente');
 
 -- --------------------------------------------------------
 
@@ -99,37 +99,6 @@ INSERT INTO `tickets` (`folio`, `cliente_id`, `tipo`, `marca`, `modelo`, `serie`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets2`
---
-
-CREATE TABLE `tickets2` (
-  `folio` int(11) NOT NULL,
-  `cliente` varchar(100) NOT NULL,
-  `correo` varchar(100) NOT NULL,
-  `telefono` varchar(100) NOT NULL,
-  `equipo` varchar(100) NOT NULL,
-  `serie` varchar(100) NOT NULL,
-  `servicio` varchar(100) NOT NULL,
-  `estimado` bigint(20) NOT NULL,
-  `descripcion` text NOT NULL,
-  `creacion` date NOT NULL DEFAULT current_timestamp(),
-  `estatus` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tickets2`
---
-
-INSERT INTO `tickets2` (`folio`, `cliente`, `correo`, `telefono`, `equipo`, `serie`, `servicio`, `estimado`, `descripcion`, `creacion`, `estatus`) VALUES
-(1, 'Joel', 'abc@gmail.com', '3366998855', 'Motorola', 'NR4564356456', 'Arreglo', 103, 'Reparacion de Bateria', '2022-10-11', 'Cerrado'),
-(2, 'Bruno', 'abc@gmail.com', '3366998855', 'Motorola', 'NR4564356456', 'Arreglo', 103, 'Reparacion de Bateria', '2022-10-11', 'Abierto'),
-(4, 'Joel', 'abc@gmail.com', '3366998855', 'Motorola', 'NR4564356456', 'Arreglo', 0, 'Actualización de Software', '0000-00-00', 'Abierto'),
-(5, 'Maria', 'adg@email.com', '3344223344', 'Motorola', 'ND354663565', 'Cambio', 651514, 'Cambio de Equipo', '2022-11-15', 'Cerrado'),
-(6, 'Josue', 'dcg@gmail.com', '23423423432', 'Nokia', 'NR4564356456', 'Cambio', 651514, 'Reparacion de Bateria', '0000-00-00', 'Abierto');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -172,12 +141,6 @@ ALTER TABLE `tickets`
   ADD KEY `fk___clients_id` (`cliente_id`);
 
 --
--- Indexes for table `tickets2`
---
-ALTER TABLE `tickets2`
-  ADD PRIMARY KEY (`folio`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -203,13 +166,7 @@ ALTER TABLE `devices`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tickets2`
---
-ALTER TABLE `tickets2`
-  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
