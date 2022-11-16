@@ -7,7 +7,6 @@ require_once "db/conn.php";
 $client = $crud->getClients();
 
 if (!isset($_GET['folio'])) {
-    //echo 'error';
     include 'includes/errormessage.php';
     header("Location: inicio.php");
 } else {

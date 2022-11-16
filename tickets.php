@@ -25,8 +25,6 @@ $results = $crud->getTicketsALL();
 
 <input type="text" id="myInput" onkeyup="filtro()" placeholder="Buscar" title="Buscar">
 
-<!-- OLD -->
-
 <table id= "myTable" class="table" class="table">
     <thead>
         <tr>
@@ -52,8 +50,6 @@ $results = $crud->getTicketsALL();
                 <td><?php echo $r['estatus'] ?></td>
                 <td>
                     <a href="ticketdetails.php?folio=<?php echo $r['folio'] ?>" class="btn btn-primary">Revisar</a>
-                    <!--<a href="edit.php?id=<?php echo $r['folio'] ?>" class="btn btn-warning">Edit</a>
-                    <a onclick="return confirm('Are you sure you want to delete this record?');" href="delete.php?id=<?php echo $r['folio'] ?>" class="btn btn-danger">Delete</a>-->
                 </td>
             </tr>
         <?php } ?>
