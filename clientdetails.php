@@ -31,8 +31,8 @@ if (!isset($_GET['cliente_id'])) {
 
     <br>
     <a href="clients.php" class="btn btn-info">Regreso</a>
-    <a href="edit.php?cliente_id=<?php echo $result['cliente_id'] ?>" class="btn btn-warning">Editar</a>
-    <a onclick="return confirm('Proceder a borrar este ticket permanentemente?');" href="delete.php?folio=<?php echo $result['folio'] ?>" class="btn btn-danger">Borrar</a>
+    <a href="clientedit.php?cliente_id=<?php echo $result['cliente_id'] ?>" class="btn btn-warning">Editar</a>
+    <a onclick="return confirm('Proceder a borrar este cliente permanentemente?');" href="clientdelete.php?cliente_id=<?php echo $result['cliente_id'] ?>" class="btn btn-danger">Borrar</a>
 
 <?php } ?>
 

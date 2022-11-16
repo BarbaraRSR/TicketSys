@@ -20,12 +20,14 @@ require_once 'db/conn.php';
 $results = $crud->getTicketsALL();
 ?>
 
-<h2>Historial de Tickets</h2><br>
+<h2>Historial de Tickets</h2>
+<a href="ticketnew.php" class="btn btn-success">Nuevo ticket</a>
+<br>
 <hr>
 
 <input type="text" id="myInput" onkeyup="filtro()" placeholder="Buscar" title="Buscar">
 
-<table id= "myTable" class="table" class="table">
+<table id= "myTable" class="table">
     <thead>
         <tr>
             <th scope="col">Folio</th>

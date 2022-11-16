@@ -5,6 +5,7 @@ require_once 'includes/auth_check.php';
 require_once 'db/conn.php';
 
 $results1 = $crud->getClients();
+$results2 = $crud->getDevices();
 
 ?>
 
@@ -31,36 +32,23 @@ $results1 = $crud->getClients();
 
         <hr class="my-4">
 
-        <!-- Información del equipo -->
-        <h4 class="card-title text-center mb-5 fw-light fs-5">Información del equipo</h4>
-            <div class="row">
-                <!-- Equipo -->
-                <div class="col"><div class="form-floating mb-3">
-                    <select type="text" name="tipo" class="form-select" id="tipo" aria-label="Default select example">
-                        <option value=""></option>
-                        <option value="Laptop o PC">Laptop o PC</option>
-                        <option value="Smartphone">Smartphone</option>
-                        <option value="Tableta">Tableta</option>
-                        <option value="Consola">Consola</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-                    <label for="equipo">Tipo*</label>
-                </div></div>
-                <div class="col"><div class="form-floating mb-3">
-                    <input required type="text" name="marca" class="form-control" id="marca">
-                    <label for="marca">Marca*</label>
-                </div></div>
-                <div class="col"><div class="form-floating mb-3">
-                    <input required type="text" name="modelo" class="form-control" id="modelo">
-                    <label for="modelo">Modelo*</label>
-                </div></div>
-            </div>
-            <div class="row">
-                <!-- Serie, servicio y costo -->
-                <div class="col"><div class="form-floating mb-3">
-                    <input required type="text" name="serie" class="form-control" id="serie">
-                    <label for="serie">Número de serie*</label>
-                </div></div>
+        <h4 class="card-title text-center mb-2 fw-light fs-5">Equipo</h4>
+
+        <div class="mb-1">
+        <label for="equipo" class="form-label"></label>
+        <select class="form-select" aria-label="Default select example" id="equipo" name="equipo">
+                <option value=""></option>
+                <?php while ($r2 = $results2->fetch(PDO::FETCH_ASSOC)) { $equipo = $r2['tipo'] . " ". $r2['marca'] . " ". $r2['modelo'] . " ". $r2['serie'];?>
+                <option value="<?php echo $r2['equipo_id'] ?>"><?php echo $equipo; ?></option>
+            <?php } ?>
+        </select>
+        </div>
+
+        <hr class="my-4">     
+        
+        <h4 class="card-title text-center mb-5 fw-light fs-5">Información del Ticket</h4>
+
+                <!-- Servicio y costo -->
                 <div class="col"><div class="form-floating mb-3">
                     <input required type="text" name="servicio" class="form-control" id="servicio">
                     <label for="servicio">Servicio*</label>

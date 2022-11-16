@@ -11,17 +11,17 @@
 </style>
 
 <?php
-$title = 'View Tickets';
+$title = 'View Devices';
 
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-$results = $crud->getClients();
+$results = $crud->getDevices();
 ?>
 
-<h2>Directorio de Clientes</h2>
-<a href="clientnew.php" class="btn btn-success">Nuevo cliente</a>
+<h2>Directorio de Equipos</h2>
+<a href="devicenew.php" class="btn btn-success">Nuevo equipo</a>
 <br>
 <hr>
 
@@ -31,26 +31,24 @@ $results = $crud->getClients();
     <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Teléfono</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Comentarios</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Serie</th>
             </th>
         </tr>
     </thead>
     <tbody>
         <?php while ($r = $results->fetch(PDO::FETCH_ASSOC)) { ?>
             <tr>
-                <td><?php echo $r['cliente_id'] ?></td>
-                <td><?php echo $r['nombre'] ?></td>
-                <td><?php echo $r['apellido'] ?></td>
-                <td><?php echo $r['telefono'] ?></td>
-                <td><?php echo $r['correo'] ?></td>
-                <td><?php echo $r['comentarios'] ?></td>
+                <td><?php echo $r['equipo_id'] ?></td>
+                <td><?php echo $r['tipo'] ?></td>
+                <td><?php echo $r['marca'] ?></td>
+                <td><?php echo $r['modelo'] ?></td>
+                <td><?php echo $r['serie'] ?></td>
                 <td>
-                    <a href="clientedit.php?cliente_id=<?php echo $r['cliente_id'] ?>" class="btn btn-warning">Actualizar</a>
-                    <a onclick="return confirm('¿Desea eliminar permanentemente a este cliente?');" href="clientdelete.php?cliente_id=<?php echo $r['cliente_id'] ?>" class="btn btn-danger">Borrar</a>
+                    <a href="deviceedit.php?equipo_id=<?php echo $r['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
+                    <a onclick="return confirm('¿Desea eliminar permanentemente a este equipo?');" href="devicedelete.php?equipo_id=<?php echo $r['equipo_id'] ?>" class="btn btn-danger">Borrar</a>
                 </td>
             </tr>
         <?php } ?>

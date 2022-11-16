@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 03:40 AM
+-- Generation Time: Nov 16, 2022 at 06:41 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,9 +44,10 @@ INSERT INTO `clients` (`cliente_id`, `nombre`, `apellido`, `telefono`, `correo`,
 (1, 'Sakura', 'Kinomoto', '12345', 'sakura@cardcaptor.com', 'Comentarios por aquí.'),
 (2, 'Harry', 'Potter', '7891234', 'hp@magic.com', NULL),
 (3, 'Emmanuel', 'Gómez', '12345', 'emm@gomez.com', ''),
-(4, 'Bruno', 'Bucciarati', '3366998855', 'abc@gmail.com', 'El comentario'),
+(4, 'Bruno', 'Bucciarati', '3366998855', 'bucciarati@gmail.com', 'El comentario'),
 (5, 'Mista', 'Guido', '1122334455', 'guido@jj.com', 'Nuevo Comentario'),
-(7, 'Fugo', 'Pannacotta', '23423423432', 'pannacotta@jj.com', 'Modificacion Realizada Actualmente');
+(7, 'Fugo', 'Pannacotta', '23423423432', 'pannacotta@jj.com', 'Modificacion Realizada Actualmente'),
+(8, 'Narancia', 'Ghirga', '343453454', 'ghirga@jj.net', 'Otro comentario');
 
 -- --------------------------------------------------------
 
@@ -57,6 +58,7 @@ INSERT INTO `clients` (`cliente_id`, `nombre`, `apellido`, `telefono`, `correo`,
 CREATE TABLE `devices` (
   `equipo_id` int(11) NOT NULL,
   `tipo` varchar(100) NOT NULL,
+  `marca` varchar(100) NOT NULL,
   `modelo` varchar(100) NOT NULL,
   `serie` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -65,9 +67,12 @@ CREATE TABLE `devices` (
 -- Dumping data for table `devices`
 --
 
-INSERT INTO `devices` (`equipo_id`, `tipo`, `modelo`, `serie`) VALUES
-(1, 'Celular', 'Motorola', 'NS4851684514'),
-(2, 'Computadora', 'Lenovo', 'SN51654564151');
+INSERT INTO `devices` (`equipo_id`, `tipo`, `marca`, `modelo`, `serie`) VALUES
+(1, 'Consola', 'Nintendo', 'Wii', '1234'),
+(2, 'Laptop o PC', 'HP', 'ZBook', 'SN1324687'),
+(3, 'Smartphone', 'Motorola', 'Edge Neo 30', 'SN65487454'),
+(5, 'Consola', 'Sony', 'PS5', 'SN651654'),
+(6, 'Tableta', 'Apple', 'Ipad', 'SN651685854');
 
 -- --------------------------------------------------------
 
@@ -78,10 +83,7 @@ INSERT INTO `devices` (`equipo_id`, `tipo`, `modelo`, `serie`) VALUES
 CREATE TABLE `tickets` (
   `folio` int(11) NOT NULL,
   `cliente_id` int(11) NOT NULL,
-  `tipo` varchar(100) NOT NULL,
-  `marca` varchar(100) NOT NULL,
-  `modelo` varchar(100) NOT NULL,
-  `serie` varchar(100) NOT NULL,
+  `equipo_id` int(11) NOT NULL,
   `servicio` varchar(100) NOT NULL,
   `estimado` bigint(20) NOT NULL,
   `descripcion` text NOT NULL,
@@ -93,8 +95,22 @@ CREATE TABLE `tickets` (
 -- Dumping data for table `tickets`
 --
 
-INSERT INTO `tickets` (`folio`, `cliente_id`, `tipo`, `marca`, `modelo`, `serie`, `servicio`, `estimado`, `descripcion`, `fecha`, `estatus`) VALUES
-(1, 1, 'Consola', 'Nintendo', 'Wii', '1234', 'Limpieza', 200, 'Limpieza de Wii.', '2022-11-13', 'Abierto');
+INSERT INTO `tickets` (`folio`, `cliente_id`, `equipo_id`, `servicio`, `estimado`, `descripcion`, `fecha`, `estatus`) VALUES
+(1, 1, 1, 'Limpieza', 200, 'Limpieza de Wii.', '2022-11-13', 'Diagnóstico'),
+(5, 2, 5, 'Cambio', 651514, 'Actualización de Software', '2022-11-15', 'Garantía'),
+(6, 8, 1, 'Reparacion', 2345, 'Cambio de Equipo', '2022-11-15', 'Abierto'),
+(7, 1, 3, 'Cambio', 345, 'Un Cambio Nuevo', '2022-11-15', 'Abierto'),
+(8, 4, 1, 'Cambio', 7989, 'Reparacion de Bateria', '2022-11-15', 'Abierto'),
+(9, 8, 1, 'Cambio', 651514, 'Actualización de Software', '2022-11-15', 'Cerrado'),
+(10, 3, 1, 'Reparacion', 2345, 'Cambio de Equipo', '2022-11-15', 'Abierto'),
+(11, 2, 1, 'Reparacion', 2345, 'Reparacion de Bateria', '2022-11-15', 'Diagnóstico'),
+(12, 1, 3, 'Cambio', 651514, 'Actualización de Software', '2022-11-15', 'Abierto'),
+(13, 8, 2, 'Reparacion', 2345, 'Cambio de Pantalla', '2022-11-15', 'Abierto'),
+(14, 3, 1, 'Arreglo', 7989, 'Actualización de Software', '2022-11-15', 'Abierto'),
+(15, 4, 2, 'Arreglo', 7989, 'Actualización de Software', '2022-11-15', 'Abierto'),
+(16, 7, 1, 'Reparacion', 2345, 'Actualización de Software', '2022-11-15', 'Abierto'),
+(17, 7, 2, 'Cambio', 7989, 'Reparacion de Bateria', '2022-11-15', 'Abierto'),
+(18, 7, 1, 'Reparacion', 7989, 'Actualización de Software', '2022-11-15', 'Garantía');
 
 -- --------------------------------------------------------
 
@@ -138,7 +154,8 @@ ALTER TABLE `devices`
 --
 ALTER TABLE `tickets`
   ADD PRIMARY KEY (`folio`),
-  ADD KEY `fk___clients_id` (`cliente_id`);
+  ADD KEY `fk___clients_id` (`cliente_id`),
+  ADD KEY `fk___devices_id` (`equipo_id`);
 
 --
 -- Indexes for table `users`
@@ -154,19 +171,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `cliente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cliente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
-  MODIFY `equipo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `equipo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `folio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -182,7 +199,8 @@ ALTER TABLE `users`
 -- Constraints for table `tickets`
 --
 ALTER TABLE `tickets`
-  ADD CONSTRAINT `fk___clients_id` FOREIGN KEY (`cliente_id`) REFERENCES `clients` (`cliente_id`);
+  ADD CONSTRAINT `fk___clients_id` FOREIGN KEY (`cliente_id`) REFERENCES `clients` (`cliente_id`),
+  ADD CONSTRAINT `fk___devices_id` FOREIGN KEY (`equipo_id`) REFERENCES `devices` (`equipo_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

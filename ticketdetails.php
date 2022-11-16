@@ -15,14 +15,14 @@ if (!isset($_GET['folio'])) {
 <h3>Ticket: <?php echo $result['folio']; ?></h3>
 
 <div class="row">
+
     <div class="col">
         <div class="card">
-        <div class="card-header">Detalles del equipo</div>
+        <div class="card-header">Detalles del Ticket</div>
         <div class="card-body">
-            <h5 class="card-title"><?php echo $result['tipo']; ?>, <?php echo $result['marca']; ?> <?php echo $result['modelo']; ?></h5>
+            <h5 class="card-title">Folio: <?php echo $result['folio']; ?></h5>
             <h6 class="card-subtitle mb-3 text-muted"><?php echo $result['estatus']; ?></h6>
             <p class="card-text">
-                Número de Serie: <?php echo $result['serie']; ?><br>
                 Servicio: <?php echo $result['servicio']; ?><br>
                 Precio Estimado: <?php echo $result['estimado']; ?><br>
                 Descripción: <?php echo $result['descripcion']; ?><br>
@@ -34,9 +34,26 @@ if (!isset($_GET['folio'])) {
         </div>
         </div>
     </div>
+
     <div class="col">
         <div class="card">
-        <div class="card-header">Información del cliente</div>
+        <div class="card-header">Información del Equipo</div>
+        <div class="card-body">
+            <h5 class="card-title"><?php echo $result['tipo']; ?></h5>
+            <p class="card-text">
+                Marca: <?php echo $result['marca']; ?><br>
+                Modelo: <?php echo $result['modelo']; ?><br>
+                Número de Serie: <?php echo $result['serie']; ?><br>
+            </p>
+            <br>
+            <a href="deviceedit.php?equipo_id=<?php echo $result['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
+        </div>
+        </div>
+    </div>
+    
+    <div class="col">
+        <div class="card">
+        <div class="card-header">Información del Cliente</div>
         <div class="card-body">
             <h5 class="card-title"><?php echo $result['nombre']; ?> <?php echo $result['apellido']; ?></h5>
             <h6 class="card-subtitle mb-3 text-muted"><?php echo $result['telefono']; ?></h6>

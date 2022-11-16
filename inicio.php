@@ -11,7 +11,8 @@ $result = $crud->getTickets();
 <h1>Tickets activos</h1>
 
 <a href="ticketnew.php" class="btn btn-success">Nuevo ticket</a>  
-<a href="clientnew.php" class="btn btn-success">Nuevo cliente</a><br>
+<a href="clientnew.php" class="btn btn-success">Nuevo cliente</a>
+<a href="devicenew.php" class="btn btn-success">Nuevo equipo</a><br>
 
 <HR>
 

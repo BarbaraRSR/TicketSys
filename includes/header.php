@@ -39,7 +39,7 @@ include_once 'includes/session.php' ?>
                         <a class="nav-link" href="inicio.php">Inicio</a>
                         <a class="nav-link" href="tickets.php">Tickets</a>
                         <a class="nav-link" href="clients.php">Clientes</a>
-                        
+                        <a class="nav-link" href="devices.php">Equipos</a>
                         
                     </div>
                     <div class="navbar-nav ms-auto">
