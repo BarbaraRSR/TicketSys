@@ -6,7 +6,14 @@ require_once "db/conn.php";
 
 if (!isset($_GET['cliente_id'])) {
     include 'includes/errormessage.php';
-    header("Location: inicio.php");
+    //header("Location: inicio.php");
+    if ($_SERVER['HTTP_HOST'] == "localhost") {
+        header("Location: inicio.php");
+    } else {
+      echo '<script type="text/javascript">
+      alert("Acción exitosa");
+      window.location.assign("inicio.php");</script>';        
+    }
 } else {
     $cliente_id = $_GET['cliente_id'];
     $ticket = $crud->getClientDetails($cliente_id);

@@ -9,7 +9,14 @@ $device = $crud->getDevices();
 
 if (!isset($_GET['folio'])) {
     include 'includes/errormessage.php';
-    header("Location: inicio.php");
+    //header("Location: inicio.php");
+    if ($_SERVER['HTTP_HOST'] == "localhost") {
+        header("Location: inicio.php");
+    } else {
+      echo '<script type="text/javascript">
+      alert("Acción exitosa");
+      window.location.assign("inicio.php");</script>';        
+    }
 } else {
     $folio = $_GET['folio'];
     $ticket = $crud->getTicketDetails($folio);

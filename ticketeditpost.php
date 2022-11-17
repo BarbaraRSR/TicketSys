@@ -14,7 +14,14 @@ if (isset($_POST['submit'])) {
 
     $result = $crud->editTicket($folio, $cliente, $equipo, $servicio, $estimado, $descripcion, $fecha, $estatus);
     if ($result) {
-        header("Location: tickets.php");
+        //header("Location: tickets.php");
+        if ($_SERVER['HTTP_HOST'] == "localhost") {
+            header("Location: tickets.php");
+        } else {
+          echo '<script type="text/javascript">
+          alert("Acción exitosa");
+          window.location.assign("tickets.php");</script>';        
+        }
     } else {
         include 'includes/errormessage.php';
     }
