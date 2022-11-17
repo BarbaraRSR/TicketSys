@@ -1,5 +1,6 @@
 <?php
 
+include_once 'includes/redirect.php';
 require_once 'db/conn.php';
 
 if (isset($_POST['submit'])) {
@@ -11,7 +12,9 @@ if (isset($_POST['submit'])) {
 
     $result = $crud->editDevice($equipo_id, $tipo, $marca, $modelo, $serie);
     if ($result) {
-        header("Location: devices.php");
+        //header("Location: devices.php");
+        assign('devices.php');
+        include 'includes/successmessage.php';
     } else {
         include 'includes/errormessage.php';
     }

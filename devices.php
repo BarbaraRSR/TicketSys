@@ -13,15 +13,16 @@
 <?php
 $title = 'View Devices';
 
+require_once 'includes/redirect.php';
 require_once 'includes/header.php';
-require_once 'includes/auth_check.php'; 
+//require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
 $results = $crud->getDevices();
 ?>
 
 <h2>Directorio de Equipos</h2>
-<a href="devicenew.php" class="btn btn-success">Nuevo equipo</a>
+<a href="<?php page('devicenew.php')?>" class="btn btn-success">Nuevo equipo</a>
 <br>
 <hr>
 
@@ -47,8 +48,8 @@ $results = $crud->getDevices();
                 <td><?php echo $r['modelo'] ?></td>
                 <td><?php echo $r['serie'] ?></td>
                 <td>
-                    <a href="deviceedit.php?equipo_id=<?php echo $r['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
-                    <a onclick="return confirm('¿Desea eliminar permanentemente a este equipo?');" href="devicedelete.php?equipo_id=<?php echo $r['equipo_id'] ?>" class="btn btn-danger">Borrar</a>
+                    <a href="<?php page('deviceedit.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
+                    <a onclick="return confirm('¿Desea eliminar permanentemente a este equipo?');" href="<?php page('devicedelete.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-danger">Borrar</a>
                 </td>
             </tr>
         <?php } ?>

@@ -1,5 +1,6 @@
 <?php
 
+include_once 'includes/redirect.php';
 require_once 'db/conn.php';
 
 if (isset($_POST['submit'])) {
@@ -14,7 +15,9 @@ if (isset($_POST['submit'])) {
 
     $result = $crud->editTicket($folio, $cliente, $equipo, $servicio, $estimado, $descripcion, $fecha, $estatus);
     if ($result) {
-        header("Location: tickets.php");
+        //header("Location: tickets.php");
+        assign('tickets.php');
+        include 'includes/successmessage.php';
     } else {
         include 'includes/errormessage.php';
     }

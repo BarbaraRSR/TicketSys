@@ -1,5 +1,6 @@
 <?php
 $title = 'TicketSys';
+include_once 'includes/redirect.php';
 include_once 'includes/session.php';
 require_once "db/conn.php";
 
@@ -15,7 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $_SESSION['username'] = $username;
         $_SESSION['userid'] = $result['usuario_id'];
-        header("Location: inicio.php");
+
+        //header("Location: inicio.php");
+        //redirect('inicio.php');
+        if ($_SERVER['HTTP_HOST'] == "localhost") {
+          header("Location: inicio.php");
+      } else {
+        echo '<script type="text/javascript">
+        window.location.assign("inicio.php");</script>';        
+      }
     }
 }
 
@@ -39,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <Body>
+
 <DIV class="container">
     <br><br>
 

@@ -1,12 +1,14 @@
 <?php
 $title = 'Edit Client';
+include_once 'includes/redirect.php';
 require_once "includes/header.php";
 require_once 'includes/auth_check.php'; 
 require_once "db/conn.php";
 
 if (!isset($_GET['cliente_id'])) {
     include 'includes/errormessage.php';
-    header("Location: inicio.php");
+    //header("Location: inicio.php");
+    assign('inicio.php');
 } else {
     $cliente_id = $_GET['cliente_id'];
     $ticket = $crud->getClientDetails($cliente_id);
@@ -20,7 +22,7 @@ if (!isset($_GET['cliente_id'])) {
         
         <!-- Registrar datos del cliente -->
         <h4 class="card-title text-center mb-5 fw-light fs-5">CLIENTE</h4>
-        <form method="post" action="clienteditpost.php">
+        <form method="post" action="<?php page('clienteditpost.php')?>">
             <div class="row">
             <div class="col">
 
@@ -59,7 +61,7 @@ if (!isset($_GET['cliente_id'])) {
             <div class="text-center">
                 <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar y continuar</button>
                 &nbsp; &nbsp;
-                <a href="clients.php" class="btn btn-danger">Cancelar</a>
+                <a href="<?php page('clients.php')?>" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>

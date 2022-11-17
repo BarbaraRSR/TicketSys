@@ -1,5 +1,6 @@
 <?php
 $title = 'New Ticket';
+require_once 'includes/redirect.php';
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
@@ -16,7 +17,7 @@ $results2 = $crud->getDevices();
     <div class="card-body p-4 p-sm-5">
         <!-- Registrar datos del cliente -->
         
-        <form method="post" action="ticketnewsuccess.php">
+        <form method="post" action="<?php page('ticketnewsuccess.php')?>">
 
         <h4 class="card-title text-center mb-2 fw-light fs-5">Cliente</h4>
 
@@ -29,7 +30,7 @@ $results2 = $crud->getDevices();
             <?php } ?>
         </select>
         </div>
-
+                
         <hr class="my-4">
 
         <h4 class="card-title text-center mb-2 fw-light fs-5">Equipo</h4>
@@ -49,11 +50,13 @@ $results2 = $crud->getDevices();
         <h4 class="card-title text-center mb-5 fw-light fs-5">Información del Ticket</h4>
 
                 <!-- Servicio y costo -->
-                <div class="col"><div class="form-floating mb-3">
+                <div class="col">
+                    <div class="form-floating mb-3">
                     <input required type="text" name="servicio" class="form-control" id="servicio">
                     <label for="servicio">Servicio*</label>
                 </div></div>
-                <div class="col"><div class="form-floating mb-3">
+                <div class="col">
+                    <div class="form-floating mb-3">
                     <input type="text" name="estimado" class="form-control" id="estimado">
                     <label for="estimado">Costo estimado</label>
                 </div></div>
@@ -62,11 +65,27 @@ $results2 = $crud->getDevices();
                     <input required type="text" name="descripcion" class="form-control" id="descripcion">
                     <label for="descripcion">&nbsp; Descripción del servicio</label>
                 </div>
+
+                <div class="form-floating mb-3">
+                    <input type="date" name="fecha" class="form-control" id="fecha" >
+                    <label for="fecha" class="form-label">Fecha</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select aria-label="Default select example" name="estatus" class="form-select" id="estatus">
+                        <option value="Abierto">Abierto</option>
+                        <option value="Diagnostico">Diagnostico</option>
+                        <option value="Cerrado">Cerrado</option>
+                        <option value="Garantia">Garantia</option>
+                        <option value="Cancelado">Cancelado</option>                   
+                    </select>
+                    <label for="estatus" class="form-label">Estatus</label>
+                </div>
+
             </div>
             <!-- Botones -->
             <div class="text-center">
                 <button type="submit" name="submit" class="btn btn-primary btn-block">Confirmar</button>
-                <a href="inicio.php" class="btn btn-danger">Cancelar</a>
+                <a href="<?php page('inicio.php')?>" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>

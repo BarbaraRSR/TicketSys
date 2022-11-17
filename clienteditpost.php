@@ -1,5 +1,6 @@
 <?php
 
+include_once 'includes/redirect.php';
 require_once 'db/conn.php';
 
 if (isset($_POST['submit'])) {
@@ -12,7 +13,9 @@ if (isset($_POST['submit'])) {
 
     $result = $crud->editClient($cliente_id, $nombre, $apellido, $telefono, $correo, $comentarios);
     if ($result) {
-        header("Location: clients.php");
+        //header("Location: clients.php");
+        assign('clients.php');
+        include 'includes/successmessage.php';
     } else {
         include 'includes/errormessage.php';
     }

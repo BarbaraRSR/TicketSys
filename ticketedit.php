@@ -1,5 +1,6 @@
 <?php
 $title = 'Edit';
+include_once 'includes/redirect.php';
 require_once "includes/header.php";
 require_once 'includes/auth_check.php'; 
 require_once "db/conn.php";
@@ -9,7 +10,9 @@ $device = $crud->getDevices();
 
 if (!isset($_GET['folio'])) {
     include 'includes/errormessage.php';
-    header("Location: inicio.php");
+    //header("Location: inicio.php");
+    assign('inicio.php');
+
 } else {
     $folio = $_GET['folio'];
     $ticket = $crud->getTicketDetails($folio);
@@ -22,7 +25,7 @@ if (!isset($_GET['folio'])) {
 
     <div class="card-body p-4 p-sm-5">
     
-    <form method="post" action="ticketeditpost.php">
+    <form method="post" action="<?php page('ticketeditpost.php')?>">
 
         <input type="hidden" name="folio" value="<?php echo $ticket['folio'] ?>">
 
@@ -74,7 +77,7 @@ if (!isset($_GET['folio'])) {
                 <div class=" mb-3">
             <label for="fecha" class="form-label">Fecha</label>
             <input type="date" class="form-control" value="<?php echo $ticket['fecha'] ?>" id="fecha" name="fecha">
-        </div>
+                </div>
         <div class="mb-3">
             <label for="estatus" class="form-label">Estatus</label>
             <select class="form-select" aria-label="Default select example" id="estatus" name="estatus">
@@ -92,7 +95,7 @@ if (!isset($_GET['folio'])) {
             <!-- Botones -->
             <div class="text-center">
                 <button type="submit" name="submit" class="btn btn-primary btn-block">Confirmar</button>
-                <a href="inicio.php" class="btn btn-danger">Cancelar</a>
+                <a href="<?php page('inicio.php')?>" class="btn btn-danger">Cancelar</a>
             </div>
     </form>
     

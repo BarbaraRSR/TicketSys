@@ -1,7 +1,10 @@
 <?php
 //This includes the session file. This file contains code that starts/resumes a session. 
 //By having it in the header file, it will be included on every page. allowing session capability to be used on every page across the website. 
-include_once 'includes/session.php' ?>
+include 'includes/session.php';
+include_once 'includes/redirect.php';
+?>
+
 
 <!doctype html>
 <html lang="es">
@@ -27,7 +30,7 @@ include_once 'includes/session.php' ?>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #005dac;">
 
             <div class="container-fluid">
-                <a class="navbar-brand" href="inicio.php">
+                <a class="navbar-brand" href="<?php page('inicio.php')?>">
                     <img src="img/logo_white.png" alt="Logo laptown">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,20 +39,20 @@ include_once 'includes/session.php' ?>
 
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-link" href="inicio.php">Inicio</a>
-                        <a class="nav-link" href="tickets.php">Tickets</a>
-                        <a class="nav-link" href="clients.php">Clientes</a>
-                        <a class="nav-link" href="devices.php">Equipos</a>
-                        
+                        <a class="nav-link" href="<?php page('inicio.php')?>">Inicio</a>
+                        <a class="nav-link" href="<?php page('tickets.php')?>">Tickets</a>
+                        <a class="nav-link" href="<?php page('clients.php')?>">Clientes</a>
+                        <a class="nav-link" href="<?php page('devices.php')?>">Equipos</a>
+
                     </div>
                     <div class="navbar-nav ms-auto">
                     <?php
                         if(!isset($_SESSION['userid'])){
                     ?>
-                        <a class="nav-link" href="index.php">Ingresar</a>
+                        <a class="nav-link" href="<?php page('index.php')?>">Ingresar</a>
                     <?php } else { ?>
-                        <a class="nav-link" href="#"><span> ¡Hola, <?php echo ucfirst($_SESSION['username'])?>!</span></a>
-                        <a class="nav-link" href="logout.php">Salir</a>
+                        <a class="nav-link" href="<?php page('#')?>"><span> ¡Hola, <?php echo ucfirst($_SESSION['username'])?>!</span></a>
+                        <a class="nav-link" href="<?php page('logout.php')?>">Salir</a>
                     <?php } ?>
                     </div>
                 </div>
