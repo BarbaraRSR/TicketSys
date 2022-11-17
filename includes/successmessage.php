@@ -1,3 +1,3 @@
 <div class="alert alert-success" role="alert">
-    Registro completado correctamente.
+    Operación completada con exito.
 </div>

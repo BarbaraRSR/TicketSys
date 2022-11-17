@@ -27,7 +27,7 @@ include_once 'includes/session.php' ?>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #005dac;">
 
             <div class="container-fluid">
-                <a class="navbar-brand" href="dashboard.php">
+                <a class="navbar-brand" href="inicio.php">
                     <img src="img/logo_white.png" alt="Logo laptown">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,9 +36,11 @@ include_once 'includes/session.php' ?>
 
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-link" href="dashboard.php">Inicio</a>
-                        <a class="nav-link" href="historial.php">Historial</a>
+                        <a class="nav-link" href="inicio.php">Inicio</a>
+                        <a class="nav-link" href="tickets.php">Tickets</a>
                         <a class="nav-link" href="clients.php">Clientes</a>
+                        <a class="nav-link" href="devices.php">Equipos</a>
+                        
                     </div>
                     <div class="navbar-nav ms-auto">
                     <?php
