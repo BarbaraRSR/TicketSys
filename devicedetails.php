@@ -1,6 +1,7 @@
 <?php
 $title = 'Detalles Equipo';
 
+require_once 'includes/redirect.php';
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
@@ -26,9 +27,9 @@ if (!isset($_GET['equipo_id'])) {
     </div>
 
     <br>
-    <a href="devices.php" class="btn btn-info">Regreso</a>
-    <a href="deviceedit.php?equipo_id=<?php echo $result['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
-    <a onclick="return confirm('Proceder a borrar este equipo permanentemente?');" href="devicedelete.php?equipo_id=<?php echo $result['equipo_id'] ?>" class="btn btn-danger">Borrar</a>
+    <a href="<?php page('devices.php')?>" class="btn btn-info">Regreso</a>
+    <a href="<?php page('deviceedit.php?equipo_id=')?><?php echo $result['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
+    <a onclick="return confirm('Proceder a borrar este equipo permanentemente?');" href="<?php page('devicedelete.php?equipo_id=')?><?php echo $result['equipo_id'] ?>" class="btn btn-danger">Borrar</a>
 
 <?php } ?>
 

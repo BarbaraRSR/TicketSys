@@ -13,15 +13,16 @@
 <?php
 $title = 'Tickets';
 
+require_once 'includes/redirect.php';
 require_once 'includes/header.php';
-require_once 'includes/auth_check.php'; 
+//require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
 $results = $crud->getTicketsALL();
 ?>
 
 <h2>Historial de Tickets</h2>
-<a href="ticketnew.php" class="btn btn-success">Nuevo ticket</a>
+<a href="<?php page('ticketnew.php')?>" class="btn btn-success">Nuevo ticket</a>
 <br>
 <hr>
 
@@ -51,7 +52,7 @@ $results = $crud->getTicketsALL();
                 <td><?php echo $r['servicio'] ?></td>
                 <td><?php echo $r['estatus'] ?></td>
                 <td>
-                    <a href="ticketdetails.php?folio=<?php echo $r['folio'] ?>" class="btn btn-primary">Revisar</a>
+                    <a href="<?php page('ticketdetails.php?folio=')?><?php echo $r['folio'] ?>" class="btn btn-primary">Revisar</a>
                 </td>
             </tr>
         <?php } ?>

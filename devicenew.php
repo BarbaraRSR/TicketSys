@@ -1,5 +1,6 @@
 <?php
 $title = 'New Device';
+require_once 'includes/redirect.php';
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
@@ -13,7 +14,7 @@ require_once 'db/conn.php';
 
         <!-- Registrar datos del equipo -->
         <h4 class="card-title text-center mb-5 fw-light fs-5">Equipo</h4>
-        <form method="post" action="devicenewsuccess.php">
+        <form method="post" action="<?php page('devicenewsuccess.php')?>">
             <div class="row">
             <div class="col">
                 <div class="col"><div class="form-floating mb-3">
@@ -48,7 +49,7 @@ require_once 'db/conn.php';
             <div class="text-center">
                 <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar y continuar</button>
                 &nbsp; &nbsp;
-                <a href="devices.php" class="btn btn-danger">Cancelar</a>
+                <a href="<?php page('devices.php')?>" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>

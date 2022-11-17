@@ -1,6 +1,7 @@
 <?php
 
 $title = 'NewClientSuccess';
+include_once 'includes/redirect.php';
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
@@ -15,6 +16,7 @@ if (isset($_POST['submit'])) {
     $isSuccess = $crud->insertClient($nombre, $apellido, $telefono, $correo, $comentarios);
 
     if ($isSuccess) {
+        assign('clients.php');
         include 'includes/successmessage.php';
     } else {
         include 'includes/errormessage.php';

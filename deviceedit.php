@@ -1,5 +1,6 @@
 <?php
 $title = 'Edit Device';
+include_once 'includes/redirect.php';
 require_once "includes/header.php";
 require_once 'includes/auth_check.php'; 
 require_once "db/conn.php";
@@ -7,13 +8,7 @@ require_once "db/conn.php";
 if (!isset($_GET['equipo_id'])) {
     include 'includes/errormessage.php';
     //header("Location: inicio.php");
-    if ($_SERVER['HTTP_HOST'] == "localhost") {
-        header("Location: inicio.php");
-    } else {
-      echo '<script type="text/javascript">
-      alert("Acción exitosa");
-      window.location.assign("inicio.php");</script>';        
-    }
+    assign('inicio.php');
 } else {
     $equipo_id = $_GET['equipo_id'];
     $equipo = $crud->getDeviceDetails($equipo_id);
@@ -65,7 +60,7 @@ if (!isset($_GET['equipo_id'])) {
             <div class="text-center">
                 <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar y continuar</button>
                 &nbsp; &nbsp;
-                <a href="devices.php" class="btn btn-danger">Cancelar</a>
+                <a href="<?php page('devices.php')?>" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
     </div>

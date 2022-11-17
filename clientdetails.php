@@ -1,8 +1,9 @@
 <?php
 $title = 'Detalles Cliente';
 
+require_once 'includes/redirect.php';
 require_once 'includes/header.php';
-require_once 'includes/auth_check.php'; 
+//require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
 if (!isset($_GET['cliente_id'])) {
@@ -30,9 +31,9 @@ if (!isset($_GET['cliente_id'])) {
     </div>
 
     <br>
-    <a href="clients.php" class="btn btn-info">Regreso</a>
-    <a href="clientedit.php?cliente_id=<?php echo $result['cliente_id'] ?>" class="btn btn-warning">Editar</a>
-    <a onclick="return confirm('Proceder a borrar este cliente permanentemente?');" href="clientdelete.php?cliente_id=<?php echo $result['cliente_id'] ?>" class="btn btn-danger">Borrar</a>
+    <a href="<?php page('clients.php')?>" class="btn btn-info">Regreso</a>
+    <a href="<?php page('clientedit.php?cliente_id=')?><?php echo $result['cliente_id'] ?>" class="btn btn-warning">Editar</a>
+    <a onclick="return confirm('Proceder a borrar este cliente permanentemente?');" href="<?php page('clientdelete.php?cliente_id=')?><?php echo $result['cliente_id'] ?>" class="btn btn-danger">Borrar</a>
 
 <?php } ?>
 

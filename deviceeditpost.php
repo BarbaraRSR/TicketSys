@@ -1,5 +1,6 @@
 <?php
 
+include_once 'includes/redirect.php';
 require_once 'db/conn.php';
 
 if (isset($_POST['submit'])) {
@@ -12,13 +13,8 @@ if (isset($_POST['submit'])) {
     $result = $crud->editDevice($equipo_id, $tipo, $marca, $modelo, $serie);
     if ($result) {
         //header("Location: devices.php");
-        if ($_SERVER['HTTP_HOST'] == "localhost") {
-            header("Location: devices.php");
-        } else {
-          echo '<script type="text/javascript">
-          alert("Acción exitosa");
-          window.location.assign("devices.php");</script>';        
-        }
+        assign('devices.php');
+        include 'includes/successmessage.php';
     } else {
         include 'includes/errormessage.php';
     }
