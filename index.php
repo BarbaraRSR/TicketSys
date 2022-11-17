@@ -3,7 +3,6 @@ $title = 'TicketSys';
 include_once 'includes/session.php';
 require_once "db/conn.php";
 
-//If data was submitted via a form POST request, then... 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = strtolower(trim($_POST['username']));
     $password = $_POST['password'];
@@ -16,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $_SESSION['username'] = $username;
         $_SESSION['userid'] = $result['usuario_id'];
-        header("Location: dashboard.php");
+        header("Location: inicio.php");
     }
 }
 
@@ -64,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               </div>
 
               <div class="d-grid">
-                <!-- <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Acceder</button>-->
                 <input type="submit" value="Acceder" class="btn btn-primary btn-login text-uppercase fw-bold">
               </div>
               <hr class="my-4">

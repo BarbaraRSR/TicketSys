@@ -11,17 +11,17 @@
 </style>
 
 <?php
-$title = 'View Tickets';
+$title = 'Tickets';
 
 require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-$results = $crud->getClients();
+$results = $crud->getTicketsALL();
 ?>
 
-<h2>Directorio de Clientes</h2>
-<a href="clientnew.php" class="btn btn-success">Nuevo cliente</a>
+<h2>Historial de Tickets</h2>
+<a href="ticketnew.php" class="btn btn-success">Nuevo ticket</a>
 <br>
 <hr>
 
@@ -30,27 +30,28 @@ $results = $crud->getClients();
 <table id= "myTable" class="table">
     <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Teléfono</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Comentarios</th>
+            <th scope="col">Folio</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Estatus</th>
             </th>
         </tr>
     </thead>
     <tbody>
         <?php while ($r = $results->fetch(PDO::FETCH_ASSOC)) { ?>
             <tr>
-                <td><?php echo $r['cliente_id'] ?></td>
-                <td><?php echo $r['nombre'] ?></td>
-                <td><?php echo $r['apellido'] ?></td>
-                <td><?php echo $r['telefono'] ?></td>
-                <td><?php echo $r['correo'] ?></td>
-                <td><?php echo $r['comentarios'] ?></td>
+                <td><?php echo $r['folio'] ?></td>
+                <td><?php echo $r['fecha'] ?></td>
+                <!-- Cliente -->
+                <td><?php echo $r['nombre'] ?> <?php echo $r['apellido'] ?></td>
+                <!-- Equipo -->
+                <td><?php echo $r['tipo'] ?>: <?php echo $r['marca'] ?>, <?php echo $r['modelo'] ?></td>
+                <td><?php echo $r['servicio'] ?></td>
+                <td><?php echo $r['estatus'] ?></td>
                 <td>
-                    <a href="clientedit.php?cliente_id=<?php echo $r['cliente_id'] ?>" class="btn btn-warning">Actualizar</a>
-                    <a onclick="return confirm('¿Desea eliminar permanentemente a este cliente?');" href="clientdelete.php?cliente_id=<?php echo $r['cliente_id'] ?>" class="btn btn-danger">Borrar</a>
+                    <a href="ticketdetails.php?folio=<?php echo $r['folio'] ?>" class="btn btn-primary">Revisar</a>
                 </td>
             </tr>
         <?php } ?>
