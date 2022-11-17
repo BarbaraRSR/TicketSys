@@ -14,17 +14,17 @@ class crud
 /* TICKETS */
 ///////////// 
 
-public function insertTicket($cliente, $equipo, $servicio, $estimado, $descripcion/*, $fecha*/, $estatus = "Abierto")
+public function insertTicket($cliente, $equipo, $servicio, $estimado, $descripcion, $fecha, $estatus)
 {
     try {
-        $sql = "INSERT INTO tickets(cliente_id, equipo_id, servicio,estimado,descripcion/*,fecha*/,estatus) VALUES (:cliente, :equipo, :servicio,:estimado,:descripcion/*,:fecha*/,:estatus)";
+        $sql = "INSERT INTO tickets(cliente_id, equipo_id, servicio,estimado,descripcion,fecha,estatus) VALUES (:cliente, :equipo, :servicio,:estimado,:descripcion,:fecha,:estatus)";
         $stmt = $this->db->prepare($sql);
         $stmt->bindparam(':cliente', $cliente);
         $stmt->bindparam(':equipo', $equipo);
         $stmt->bindparam(':servicio', $servicio);
         $stmt->bindparam(':estimado', $estimado);
         $stmt->bindparam(':descripcion', $descripcion);
-        //$stmt->bindparam(':fecha', $fecha);
+        $stmt->bindparam(':fecha', $fecha);
         $stmt->bindparam(':estatus', $estatus);
         $stmt->execute();
         return true;
