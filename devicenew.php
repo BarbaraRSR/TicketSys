@@ -15,9 +15,9 @@ require_once 'db/conn.php';
         <!-- Registrar datos del equipo -->
         <h4 class="card-title text-center mb-5 fw-light fs-5">Equipo</h4>
         <form method="post" action="<?php page('devicenewsuccess.php')?>">
-            <div class="row">
+        <div class="row">
             <div class="col">
-                <div class="col"><div class="form-floating mb-3">
+                <div class="form-floating mb-3">
                     <select type="text" name="tipo" class="form-select" id="tipo" aria-label="Default select example">
                         <option value=""></option>
                         <option value="Laptop o PC">Laptop o PC</option>
@@ -27,25 +27,26 @@ require_once 'db/conn.php';
                         <option value="Otro">Otro</option>
                     </select>
                     <label for="equipo">Tipo*</label>
-                </div></div>
+                </div>
+            </div>
+            <div class="col">
                 <div class="form-floating mb-3">
                     <input required type="text" name="marca" class="form-control" id="marca">
                     <label for="marca">&nbsp; Marca del equipo*</label>
-                </div></div>
-                <div class="col">
+                </div>
+            </div>
+            <div class="col">
                 <div class="form-floating mb-3">
                     <input required type="text" name="modelo" class="form-control" id="modelo">
                     <label for="modelo">&nbsp; Modelo del equipo*</label>
                 </div>
             </div>
-            </div><div class="row">
-            </div>
+        </div>
 
             <!-- Botones -->
             <div class="text-center">
-                <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar y continuar</button>
-                &nbsp; &nbsp;
-                <a href="<?php page('devices.php')?>" class="btn btn-danger">Cancelar</a>
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar</button>
+                <button onclick="history.back()" class="btn btn-danger">Cancelar</button>
             </div>
         </form>
     </div>
