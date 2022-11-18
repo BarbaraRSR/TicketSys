@@ -49,7 +49,7 @@ if (!isset($_GET['folio'])) {
         <label for="equipo" class="form-label">Equipo</label>
         <select class="form-select" aria-label="Default select example" id="equipo" name="equipo">
                 
-                <?php while ($d = $device->fetch(PDO::FETCH_ASSOC)) { $equipo = $d['tipo'] . " ". $d['marca'] . " ". $d['modelo'] . " ". $d['serie'];?>
+                <?php while ($d = $device->fetch(PDO::FETCH_ASSOC)) { $equipo = $d['tipo'] . " ". $d['marca'] . " ". $d['modelo'];?>
                 <option value="<?php echo $d['equipo_id'] ?>"><?php echo $equipo; ?></option>
             <?php } ?>
         </select>

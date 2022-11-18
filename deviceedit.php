@@ -30,7 +30,7 @@ if (!isset($_GET['equipo_id'])) {
 
                 <div class="col"><div class="form-floating mb-3">
                     <select type="text" name="tipo" class="form-select" id="tipo" aria-label="Default select example">
-                        <option value=""></option>
+                    <option value="<?php echo $equipo['tipo'] ?>"><?php echo " --- " . $equipo['tipo'] . " --- "?></option>
                         <option value="Laptop o PC">Laptop o PC</option>
                         <option value="Smartphone">Smartphone</option>
                         <option value="Tableta">Tableta</option>
