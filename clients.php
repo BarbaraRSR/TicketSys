@@ -22,7 +22,8 @@ $results = $crud->getClients();
 ?>
 
 <h2>Directorio de Clientes</h2>
-<a href="<?php page('clientnew.php')?>" class="btn btn-success">Nuevo cliente</a>
+<a href="<?php page('clientnew.php')?>" class="btn btn-success" title="Agregar cliente"><img src="img/plus.svg" width="23"> <img src="img/user.svg" width="23"></a>
+<a href="<?php page('ticketnew.php')?>" class="btn btn-success" title="Agregar ticket"><img src="img/plus.svg" width="23"> <img src="img/ticket.svg" width="23"></a>
 <br>
 <hr>
 
@@ -50,8 +51,8 @@ $results = $crud->getClients();
                 <td><?php echo $r['correo'] ?></td>
                 <td><?php echo $r['comentarios'] ?></td>
                 <td>
-                    <a href="<?php page('clientedit.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-warning">Actualizar</a>
-                    <a onclick="return confirm('¿Desea eliminar permanentemente a este cliente?');" href="<?php page('clientdelete.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-danger">Borrar</a>
+                    <a href="<?php page('clientedit.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-warning"><img src="img/edit.svg" width="23"></a>
+                    <a onclick="return confirm('¿Desea eliminar permanentemente a este cliente?');" href="<?php page('clientdelete.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-danger"><img src="img/trash.svg" width="23"></a>
                 </td>
             </tr>
         <?php } ?>
