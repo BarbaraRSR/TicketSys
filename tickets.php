@@ -35,6 +35,7 @@ $results = $crud->getTicketsALL();
             <th scope="col">Fecha</th>
             <th scope="col">Cliente</th>
             <th scope="col">Equipo</th>
+            <th scope="col">No.Serie</th>
             <th scope="col">Servicio</th>
             <th scope="col">Estatus</th>
             </th>
@@ -49,6 +50,7 @@ $results = $crud->getTicketsALL();
                 <td><?php echo $r['nombre'] ?> <?php echo $r['apellido'] ?></td>
                 <!-- Equipo -->
                 <td><?php echo $r['tipo'] ?>: <?php echo $r['marca'] ?>, <?php echo $r['modelo'] ?></td>
+                <td><?php echo $r['serie'] ?></td>
                 <td><?php echo $r['servicio'] ?></td>
                 <td><?php echo $r['estatus'] ?></td>
                 <td>
@@ -74,7 +76,14 @@ function filterTable(event) {
         var Col3 = rows[i].cells[3].textContent.toUpperCase();
         var Col4 = rows[i].cells[4].textContent.toUpperCase();
         var Col5 = rows[i].cells[5].textContent.toUpperCase();
-        if (Col0.indexOf(filter) > -1 || Col1.indexOf(filter) > -1 || Col2.indexOf(filter) > -1 || Col3.indexOf(filter) > -1 || Col4.indexOf(filter) > -1 || Col5.indexOf(filter) > -1) {
+        var Col6 = rows[i].cells[6].textContent.toUpperCase();
+        if (Col0.indexOf(filter) > -1 || 
+            Col1.indexOf(filter) > -1 || 
+            Col2.indexOf(filter) > -1 || 
+            Col3.indexOf(filter) > -1 || 
+            Col4.indexOf(filter) > -1 || 
+            Col5.indexOf(filter) > -1 ||
+            Col6.indexOf(filter) > -1) {
             rows[i].style.display = "";
         } else {
             rows[i].style.display = "none";

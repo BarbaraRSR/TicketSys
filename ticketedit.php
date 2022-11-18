@@ -1,5 +1,5 @@
 <?php
-$title = 'Edit';
+$title = 'Ticket Edit';
 include_once 'includes/redirect.php';
 require_once "includes/header.php";
 require_once 'includes/auth_check.php'; 
