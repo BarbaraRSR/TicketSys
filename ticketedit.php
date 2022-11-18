@@ -55,6 +55,11 @@ if (!isset($_GET['folio'])) {
         </select>
         </div>
 
+        <div class="col"><div class="form-floating mb-3">
+                    <input required type="text" name="serie" class="form-control" value="<?php echo $ticket['serie'] ?>" id="serie">
+                    <label for="serie">Serie*</label>
+                </div></div>
+
         <hr class="my-4">          
 
         <h4 class="card-title text-center mb-5 fw-light fs-5">Información del Ticket</h4>

@@ -10,9 +10,8 @@ if (isset($_POST['submit'])) {
     $tipo = $_POST['tipo'];
     $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];
-    $serie = $_POST['serie'];
 
-$isSuccess = $crud->insertDevice($tipo, $marca, $modelo, $serie);
+$isSuccess = $crud->insertDevice($tipo, $marca, $modelo);
 
     if ($isSuccess) {
         assign('devices.php');

@@ -35,7 +35,6 @@ $results = $crud->getDevices();
             <th scope="col">Tipo</th>
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
-            <th scope="col">Serie</th>
             </th>
         </tr>
     </thead>
@@ -46,7 +45,6 @@ $results = $crud->getDevices();
                 <td><?php echo $r['tipo'] ?></td>
                 <td><?php echo $r['marca'] ?></td>
                 <td><?php echo $r['modelo'] ?></td>
-                <td><?php echo $r['serie'] ?></td>
                 <td>
                     <a href="<?php page('deviceedit.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
                     <a onclick="return confirm('¿Desea eliminar permanentemente a este equipo?');" href="<?php page('devicedelete.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-danger">Borrar</a>

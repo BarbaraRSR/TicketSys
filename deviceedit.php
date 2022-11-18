@@ -50,10 +50,6 @@ if (!isset($_GET['equipo_id'])) {
                 </div>
             </div>
             </div><div class="row">
-                <div class="col"><div class="form-floating mb-3">
-                    <input required type="text" name="serie" class="form-control" value="<?php echo $equipo['serie'] ?>" id="serie">
-                    <label for="serie">Serie*</label>
-                </div></div>
             </div>
 
             <!-- Botones -->

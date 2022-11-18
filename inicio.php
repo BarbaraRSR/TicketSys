@@ -40,8 +40,7 @@ $result = $crud->getTickets();
                 <td><?php echo $res['servicio'] ?></td>
                 <td>
                 <a href="<?php page('ticketdetails.php?folio=')?><?php echo $res['folio'] ?>">
-                        <img src="img/view.svg" class="rounded bg-primary p-1" width="30">
-                    </a>
+                         <img src="img/view.svg" class="rounded bg-primary p-1" width="30"></a>
                 </td>
             </tr>
         <?php } ?>

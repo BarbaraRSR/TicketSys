@@ -8,9 +8,8 @@ if (isset($_POST['submit'])) {
     $tipo = $_POST['tipo'];
     $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];
-    $serie = $_POST['serie'];
 
-    $result = $crud->editDevice($equipo_id, $tipo, $marca, $modelo, $serie);
+    $result = $crud->editDevice($equipo_id, $tipo, $marca, $modelo);
     if ($result) {
         //header("Location: devices.php");
         assign('devices.php');

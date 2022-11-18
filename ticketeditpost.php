@@ -7,13 +7,14 @@ if (isset($_POST['submit'])) {
     $folio = $_POST['folio'];
     $cliente = $_POST['cliente'];
     $equipo = $_POST['equipo'];
+    $serie = $_POST['serie'];
     $servicio = $_POST['servicio'];
     $estimado = $_POST['estimado'];
     $descripcion = $_POST['descripcion'];
     $fecha = $_POST['fecha'];
     $estatus = $_POST['estatus'];
 
-    $result = $crud->editTicket($folio, $cliente, $equipo, $servicio, $estimado, $descripcion, $fecha, $estatus);
+    $result = $crud->editTicket($folio, $cliente, $equipo, $serie, $servicio, $estimado, $descripcion, $fecha, $estatus);
     if ($result) {
         //header("Location: tickets.php");
         assign('tickets.php');
