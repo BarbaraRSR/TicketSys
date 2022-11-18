@@ -54,7 +54,8 @@ $results = $crud->getTicketsALL();
                 <td><?php echo $r['servicio'] ?></td>
                 <td><?php echo $r['estatus'] ?></td>
                 <td>
-                    <a href="<?php page('ticketdetails.php?folio=')?><?php echo $r['folio'] ?>" class="btn btn-primary">Revisar</a>
+                    <a href="<?php page('ticketdetails.php?folio=')?><?php echo $r['folio'] ?>" class="btn btn-primary">
+                        <img src="img/view.svg" width="23"></a>
                 </td>
             </tr>
         <?php } ?>
