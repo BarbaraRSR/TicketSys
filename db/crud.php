@@ -14,13 +14,14 @@ class crud
 /* TICKETS */
 ///////////// 
 
-public function insertTicket($cliente, $equipo, $servicio, $estimado, $descripcion, $fecha, $estatus)
+public function insertTicket($cliente, $equipo, $serie, $servicio, $estimado, $descripcion, $fecha, $estatus)
 {
     try {
-        $sql = "INSERT INTO tickets(cliente_id, equipo_id, servicio,estimado,descripcion,fecha,estatus) VALUES (:cliente, :equipo, :servicio,:estimado,:descripcion,:fecha,:estatus)";
+        $sql = "INSERT INTO tickets(cliente_id, equipo_id, serie, servicio,estimado,descripcion,fecha,estatus) VALUES (:cliente, :equipo, :serie, :servicio,:estimado,:descripcion,:fecha,:estatus)";
         $stmt = $this->db->prepare($sql);
         $stmt->bindparam(':cliente', $cliente);
         $stmt->bindparam(':equipo', $equipo);
+        $stmt->bindparam(':serie', $serie);
         $stmt->bindparam(':servicio', $servicio);
         $stmt->bindparam(':estimado', $estimado);
         $stmt->bindparam(':descripcion', $descripcion);
@@ -34,14 +35,15 @@ public function insertTicket($cliente, $equipo, $servicio, $estimado, $descripci
     }
 }
 
-    public function editTicket($folio, $cliente, $equipo, $servicio, $estimado, $descripcion, $fecha, $estatus)
+    public function editTicket($folio, $cliente, $equipo, $serie, $servicio, $estimado, $descripcion, $fecha, $estatus)
     {
         try {
-            $sql = "UPDATE `tickets` SET `cliente_id`=:cliente,`equipo_id`=:equipo,`servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`fecha`=:fecha,`estatus`=:estatus WHERE folio = :folio";
+            $sql = "UPDATE `tickets` SET `cliente_id`=:cliente,`equipo_id`=:equipo,`serie`=:serie, `servicio`=:servicio,`estimado`=:estimado,`descripcion`=:descripcion,`fecha`=:fecha,`estatus`=:estatus WHERE folio = :folio";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':folio', $folio);
             $stmt->bindparam(':cliente', $cliente);
             $stmt->bindparam(':equipo', $equipo);
+            $stmt->bindparam(':serie', $serie);
             $stmt->bindparam(':servicio', $servicio);
             $stmt->bindparam(':estimado', $estimado);
             $stmt->bindparam(':descripcion', $descripcion);
@@ -203,16 +205,15 @@ public function insertTicket($cliente, $equipo, $servicio, $estimado, $descripci
 /* DEVICES */
 ///////////// 
 
-public function insertDevice($tipo, $marca, $modelo, $serie)
+public function insertDevice($tipo, $marca, $modelo)
 {
     try {
-        $sql = "INSERT INTO devices(tipo,marca,modelo,serie)
-                VALUES (:tipo,:marca,:modelo,:serie)";
+        $sql = "INSERT INTO devices(tipo,marca,modelo)
+                VALUES (:tipo,:marca,:modelo)";
         $stmt = $this->db->prepare($sql);
         $stmt->bindparam(':tipo', $tipo);
         $stmt->bindparam(':marca', $marca);
         $stmt->bindparam(':modelo', $modelo);
-        $stmt->bindparam(':serie', $serie);
         $stmt->execute();
         return true;
     } catch (PDOException $e) {
@@ -221,16 +222,15 @@ public function insertDevice($tipo, $marca, $modelo, $serie)
     }
 }
 
-public function editDevice($equipo_id, $tipo, $marca, $modelo, $serie)
+public function editDevice($equipo_id, $tipo, $marca, $modelo)
 {
     try {
-        $sql = "UPDATE `devices` SET `tipo`=:tipo,`marca`=:marca,`modelo`=:modelo,`serie`=:serie WHERE equipo_id = :equipo_id";
+        $sql = "UPDATE `devices` SET `tipo`=:tipo,`marca`=:marca,`modelo`=:modelo WHERE equipo_id = :equipo_id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindparam(':equipo_id', $equipo_id);
         $stmt->bindparam(':tipo', $tipo);
         $stmt->bindparam(':marca', $marca);
         $stmt->bindparam(':modelo', $modelo);
-        $stmt->bindparam(':serie', $serie);
         $stmt->execute();
         return true;
     } catch (PDOException $e) {

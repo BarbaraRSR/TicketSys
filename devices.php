@@ -35,7 +35,6 @@ $results = $crud->getDevices();
             <th scope="col">Tipo</th>
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
-            <th scope="col">Serie</th>
             </th>
         </tr>
     </thead>
@@ -46,7 +45,6 @@ $results = $crud->getDevices();
                 <td><?php echo $r['tipo'] ?></td>
                 <td><?php echo $r['marca'] ?></td>
                 <td><?php echo $r['modelo'] ?></td>
-                <td><?php echo $r['serie'] ?></td>
                 <td>
                     <a href="<?php page('deviceedit.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
                     <a onclick="return confirm('¿Desea eliminar permanentemente a este equipo?');" href="<?php page('devicedelete.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-danger">Borrar</a>
@@ -69,9 +67,10 @@ function filterTable(event) {
         var Col1 = rows[i].cells[1].textContent.toUpperCase();
         var Col2 = rows[i].cells[2].textContent.toUpperCase();
         var Col3 = rows[i].cells[3].textContent.toUpperCase();
-        var Col4 = rows[i].cells[4].textContent.toUpperCase();
-        var Col5 = rows[i].cells[5].textContent.toUpperCase();
-        if (Col0.indexOf(filter) > -1 || Col1.indexOf(filter) > -1 || Col2.indexOf(filter) > -1 || Col3.indexOf(filter) > -1 || Col4.indexOf(filter) > -1 || Col5.indexOf(filter) > -1) {
+        if (Col0.indexOf(filter) > -1 || 
+            Col1.indexOf(filter) > -1 || 
+            Col2.indexOf(filter) > -1 || 
+            Col3.indexOf(filter) > -1) {
             rows[i].style.display = "";
         } else {
             rows[i].style.display = "none";

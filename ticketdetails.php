@@ -1,5 +1,5 @@
 <?php
-$title = 'Ticket Detalles';
+$title = 'Ticket Details';
 
 require_once 'includes/redirect.php';
 require_once 'includes/header.php';
