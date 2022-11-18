@@ -74,7 +74,12 @@ function filterTable(event) {
         var Col3 = rows[i].cells[3].textContent.toUpperCase();
         var Col4 = rows[i].cells[4].textContent.toUpperCase();
         var Col5 = rows[i].cells[5].textContent.toUpperCase();
-        if (Col0.indexOf(filter) > -1 || Col1.indexOf(filter) > -1 || Col2.indexOf(filter) > -1 || Col3.indexOf(filter) > -1 || Col4.indexOf(filter) > -1 || Col5.indexOf(filter) > -1) {
+        if (Col0.indexOf(filter) > -1 || 
+            Col1.indexOf(filter) > -1 || 
+            Col2.indexOf(filter) > -1 || 
+            Col3.indexOf(filter) > -1 || 
+            Col4.indexOf(filter) > -1 || 
+            Col5.indexOf(filter) > -1) {
             rows[i].style.display = "";
         } else {
             rows[i].style.display = "none";
