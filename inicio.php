@@ -11,9 +11,9 @@ $result = $crud->getTickets();
 
 <h1>Tickets activos</h1>
 
-<a href="<?php page("ticketnew.php")?>" class="btn btn-success">Nuevo ticket</a>  
-<a href="<?php page("clientnew.php")?>" class="btn btn-success">Nuevo cliente</a>
-<a href="<?php page("devicenew.php")?>" class="btn btn-success">Nuevo equipo</a><br>
+<a href="<?php page('ticketnew.php')?>" class="btn btn-success" title="Agregar ticket"><img src="img/plus.svg" width="23"> <img src="img/ticket.svg" width="23"></a>
+<a href="<?php page('clientnew.php')?>" class="btn btn-success" title="Agregar cliente"><img src="img/plus.svg" width="23"> <img src="img/user.svg" width="23"></a>
+<a href="<?php page("devicenew.php")?>" class="btn btn-success" title="Agregar equipo"><img src="img/plus.svg" width="23"> <img src="img/pc.svg" width="23"></a><br>
 
 <HR>
 
