@@ -54,7 +54,7 @@ if (!isset($_GET['equipo_id'])) {
 
             <!-- Botones -->
             <div class="text-center">
-                <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar y continuar</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar</button>
                 &nbsp; &nbsp;
                 <a href="<?php page('devices.php')?>" class="btn btn-danger">Cancelar</a>
             </div>
