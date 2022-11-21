@@ -48,8 +48,8 @@ $results = $crud->getDevices();
                 <td><?php echo $r['marca'] ?></td>
                 <td><?php echo $r['modelo'] ?></td>
                 <td>
-                    <a href="<?php page('deviceedit.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
-                    <a onclick="return confirm('¿Desea eliminar permanentemente a este equipo?');" href="<?php page('devicedelete.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-danger">Borrar</a>
+                    <a href="<?php page('deviceedit.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-warning" title="Editar equipo"><img src="img/edit.svg" width="23"></a>
+                    <a onclick="return confirm('¿Desea eliminar permanentemente a este equipo?');" href="<?php page('devicedelete.php?equipo_id=')?><?php echo $r['equipo_id'] ?>" class="btn btn-danger" title="Eliminar equipo"><img src="img/trash.svg" width="23"></a>
                 </td>
             </tr>
         <?php } ?>

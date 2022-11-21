@@ -23,8 +23,8 @@ $result = $crud->getTickets();
             <th scope="col">Fecha</th>
             <th scope="col">Cliente</th>
             <th scope="col">Equipo</th>
-            <th scope="col">No.Serie</th>
             <th scope="col">Servicio</th>
+            <th scope="col">Estimado</th>
             </th>
         </tr>
     </thead>
@@ -35,8 +35,8 @@ $result = $crud->getTickets();
                 <td><?php echo $res['fecha'] ?></td>
                 <td><?php echo $res['nombre'] ?> <?php echo $res['apellido'] ?></td>
                 <td><?php echo $res['tipo'] ?>; <?php echo $res['marca'] ?>, <?php echo $res['modelo'] ?></td>
-                <td><?php echo $res['serie'] ?></td>
                 <td><?php echo $res['servicio'] ?></td>
+                <td>$<?php echo $res['estimado'] ?></td>
                 <td>
                 <a href="<?php page('ticketdetails.php?folio=')?><?php echo $res['folio'] ?>" class="btn btn-primary">
                     <img src="img/view.svg" width="23"></a>

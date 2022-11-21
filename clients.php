@@ -38,7 +38,6 @@ $results = $crud->getClients();
             <th scope="col">Apellido</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Correo</th>
-            <th scope="col">Comentarios</th>
             </th>
         </tr>
     </thead>
@@ -50,10 +49,10 @@ $results = $crud->getClients();
                 <td><?php echo $r['apellido'] ?></td>
                 <td><?php echo $r['telefono'] ?></td>
                 <td><?php echo $r['correo'] ?></td>
-                <td><?php echo $r['comentarios'] ?></td>
                 <td>
-                    <a href="<?php page('clientedit.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-warning"><img src="img/edit.svg" width="23"></a>
-                    <a onclick="return confirm('¿Desea eliminar permanentemente a este cliente?');" href="<?php page('clientdelete.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-danger"><img src="img/trash.svg" width="23"></a>
+                    <a href="<?php page('clientdetails.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-primary" title="Ver detalles del cliente"><img src="img/view.svg" width="23"></a>
+                    <a href="<?php page('clientedit.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-warning" title="Editar cliente"><img src="img/edit.svg" width="23"></a>
+                    <a onclick="return confirm('¿Desea eliminar permanentemente a este cliente?');" href="<?php page('clientdelete.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-danger" title="Eliminar cliente"><img src="img/trash.svg" width="23"></a>
                 </td>
             </tr>
         <?php } ?>

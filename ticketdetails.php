@@ -23,9 +23,9 @@ if (!isset($_GET['folio'])) {
                 <h5 class="card-title">Estatus: <?php echo $result['estatus']; ?></h5>
                 <h6 class="card-subtitle mb-3 text-muted"><?php echo $result['servicio']; ?></h6>
                 <p class="card-text">
-                    Equipo: <?php echo $result['tipo']; ?>: <?php echo $result['marca']; ?> <?php echo $result['modelo']; ?><br>
+                    Equipo <?php echo $result['tipo']; ?>: <?php echo $result['marca']; ?> <?php echo $result['modelo']; ?><br>
                     Número de Serie: <?php echo $result['serie']; ?><br>
-                    Precio Estimado: <?php echo $result['estimado']; ?><br>
+                    Precio Estimado: $<?php echo $result['estimado']; ?><br>
                     Descripción: <?php echo $result['descripcion']; ?><br>
                     Fecha: <?php echo $result['fecha']; ?><br>
                 </p>

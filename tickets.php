@@ -37,7 +37,6 @@ $results = $crud->getTicketsALL();
             <th scope="col">Fecha</th>
             <th scope="col">Cliente</th>
             <th scope="col">Equipo</th>
-            <th scope="col">No.Serie</th>
             <th scope="col">Servicio</th>
             <th scope="col">Estatus</th>
             </th>
@@ -51,8 +50,7 @@ $results = $crud->getTicketsALL();
                 <!-- Cliente -->
                 <td><?php echo $r['nombre'] ?> <?php echo $r['apellido'] ?></td>
                 <!-- Equipo -->
-                <td><?php echo $r['tipo'] ?>: <?php echo $r['marca'] ?>, <?php echo $r['modelo'] ?></td>
-                <td><?php echo $r['serie'] ?></td>
+                <td><?php echo $r['marca'] ?>, <?php echo $r['modelo'] ?></td>
                 <td><?php echo $r['servicio'] ?></td>
                 <td><?php echo $r['estatus'] ?></td>
                 <td>
