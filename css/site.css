@@ -1,1 +1,7 @@
 
+.filter-blue{
+    filter: invert(54%) sepia(3%) saturate(74%) hue-rotate(37deg) brightness(93%) contrast(87%);
+}
+.filter-blue:hover, .filter-blue:active {
+    filter: invert(31%) sepia(60%) saturate(6325%) hue-rotate(204deg) brightness(107%) contrast(107%);
+}
