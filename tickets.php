@@ -22,8 +22,10 @@ $results = $crud->getTicketsALL();
 ?>
 
 <h2>Historial de Tickets</h2>
-<a href="<?php page('ticketnew.php')?>" class="btn btn-success">Nuevo ticket</a>
-<br>
+
+<!-- Botones de acceso rápido a agregar a la DB -->
+<?php require_once 'includes/buttons.php' ?>
+
 <hr>
 
 <input type="text" id="myInput" onkeyup="filtro()" placeholder="Buscar" title="Buscar">
@@ -54,8 +56,7 @@ $results = $crud->getTicketsALL();
                 <td><?php echo $r['servicio'] ?></td>
                 <td><?php echo $r['estatus'] ?></td>
                 <td>
-                    <a href="<?php page('ticketdetails.php?folio=')?><?php echo $r['folio'] ?>" class="btn btn-primary">
-                        <img src="img/view.svg" width="23"></a>
+                    <a href="<?php page('ticketdetails.php?folio=')?><?php echo $r['folio'] ?>" class="btn btn-primary"><img src="img/view.svg" width="23"></a>
                 </td>
             </tr>
         <?php } ?>

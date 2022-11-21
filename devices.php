@@ -22,8 +22,10 @@ $results = $crud->getDevices();
 ?>
 
 <h2>Directorio de Equipos</h2>
-<a href="<?php page('devicenew.php')?>" class="btn btn-success">Nuevo equipo</a>
-<br>
+
+<!-- Botones de acceso rápido a agregar a la DB -->
+<?php require_once 'includes/buttons.php' ?>
+
 <hr>
 
 <input type="text" id="myInput" onkeyup="filtro()" placeholder="Buscar" title="Buscar">

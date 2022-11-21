@@ -22,9 +22,10 @@ $results = $crud->getClients();
 ?>
 
 <h2>Directorio de Clientes</h2>
-<a href="<?php page('clientnew.php')?>" class="btn btn-success" title="Agregar cliente"><img src="img/plus.svg" width="23"> <img src="img/user.svg" width="23"></a>
-<a href="<?php page('ticketnew.php')?>" class="btn btn-success" title="Agregar ticket"><img src="img/plus.svg" width="23"> <img src="img/ticket.svg" width="23"></a>
-<br>
+
+<!-- Botones de acceso rápido a agregar a la DB -->
+<?php require_once 'includes/buttons.php' ?>
+
 <hr>
 
 <input type="text" id="myInput" onkeyup="filtro()" placeholder="Buscar" title="Buscar">
