@@ -1,7 +1,7 @@
 <div class="alert alert-danger" role="alert">
-    Operation fallida. Vuelva a intentarlo. 
+    Algo salió mal. Vuelva a intentarlo. 
 </div>
 
 <div>
-<a href="<?php page('inicio.php')?>" class="btn btn-info">Regresar</a>
+    <button onclick="history.back()" class="btn btn-danger">Cancelar</button>
 </div>

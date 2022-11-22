@@ -1,7 +1,9 @@
 <div class="alert alert-success" role="alert">
-    Operación completada con exito.
+    Operación completada con éxito.
 </div>
 
+<?php require_once "buttons.php"; ?>
+
 <div>
-<a href="<?php page('inicio.php')?>" class="btn btn-info">Continuar</a>
+    <button onclick="history.back()" class="btn btn-info">Continuar</button>
 </div>
