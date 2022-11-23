@@ -36,14 +36,6 @@ require_once 'db/conn.php';
                     <input type="email" name="correo" class="form-control" id="correo" aria-describedby="emailHelp">
                     <label for="correo">Correo electrónico</label>
                 </div></div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-floating mb-3">
-                    <input type="text" name="comentarios" class="form-control" id="comentarios">
-                    <label for="comentarios">Comentarios</label>
-                    </div>   
-                </div>
-            </div>
             </div>
 
             <!-- Botones -->

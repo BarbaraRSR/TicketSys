@@ -44,12 +44,11 @@ if (!isset($_GET['cliente_id'])) {
     <h5 class="card-title">Historial de servicios</h5>
     <hr>
     
-Tabla de contenido con HISTORIAL de TICKETS del cliente
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">Fecha</th>
           <th scope="col">Folio</th>
+          <th scope="col">Fecha</th>
           <th scope="col">Equipo</th>
           <th scope="col">Servicio</th>
           <th scope="col">Costo</th>
@@ -60,8 +59,8 @@ Tabla de contenido con HISTORIAL de TICKETS del cliente
       <tbody>
         <?php  while ($t = $ticket->fetch(PDO::FETCH_ASSOC)) { ?>
           <tr>
-            <td><?php echo $t['fecha'] ?></td>
             <td><?php echo $t['folio'] ?></td>
+            <td><?php echo $t['fecha'] ?></td>
             <td><?php echo $t['tipo'] . " " . $t['marca'] . " " . $t['modelo']; ?></td>
             <td><?php echo $t['servicio'] ?></td>
             <td><?php echo "$" . $t['estimado'] ?></td>
@@ -76,19 +75,14 @@ Tabla de contenido con HISTORIAL de TICKETS del cliente
       </tbody>
     </table>
 
-        </div>
-    </div>
+  </div>
+  </div>
 
     
 
     <br>
     <button onclick="history.back()" class="btn btn-info">Regresar</button>
 
-    <!--
-    <a href="<?php //page('clients.php')?>" class="btn btn-info">Regreso</a>
-    <a href="<?php //page('clientedit.php?cliente_id=')?><?php //echo $result['cliente_id'] ?>" class="btn btn-warning">Editar</a>
-    <a onclick="return confirm('Proceder a borrar este cliente permanentemente?');" href="<?php //page('clientdelete.php?cliente_id=')?><?php //echo $result['cliente_id'] ?>" class="btn btn-danger">Borrar</a>
--->
 <?php  } ?>
 
 <?php require_once 'includes/footer.php'; ?>

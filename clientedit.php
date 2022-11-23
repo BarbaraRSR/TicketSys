@@ -47,14 +47,6 @@ if (!isset($_GET['cliente_id'])) {
                     <input type="email" name="correo" class="form-control" value="<?php echo $ticket['correo'] ?>" id="correo" aria-describedby="emailHelp">
                     <label for="correo">Correo electrónico</label>
                 </div></div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-floating mb-3">
-                    <input type="text" name="comentarios" class="form-control" value="<?php echo $ticket['comentarios'] ?>" id="comentarios">
-                    <label for="comentarios">Comentarios</label>
-                    </div>   
-                </div>
-            </div>
             </div>
 
             <!-- Botones -->
