@@ -36,6 +36,14 @@ require_once 'db/conn.php';
                     <input type="email" name="correo" class="form-control" id="correo" aria-describedby="emailHelp">
                     <label for="correo">Correo electrónico</label>
                 </div></div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                    <input type="text" name="comentarios" class="form-control" id="comentarios">
+                    <label for="comentarios">Comentarios</label>
+                    </div>   
+                </div>
+            </div>
             </div>
 
             <!-- Botones -->
@@ -43,6 +51,7 @@ require_once 'db/conn.php';
                 <button type="submit" name="submit" class="btn btn-primary btn-block">Guardar</button>
                 &nbsp; &nbsp;
                 <button onclick="history.back()" class="btn btn-danger">Cancelar</button>
+                <!--<a href="<?php //page('clients.php')?>" class="btn btn-danger">Cancelar</a>-->
             </div>
         </form>
     </div>

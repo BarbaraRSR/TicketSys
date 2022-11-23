@@ -25,6 +25,7 @@ $results = $crud->getTicketsALL();
 
 <!-- Botones de acceso rápido a agregar a la DB -->
 <?php require_once 'includes/buttons.php' ?>
+<!--<a href="<?php //page('ticketnew.php')?>" class="btn btn-success">Nuevo ticket</a><br>-->
 
 <hr>
 
@@ -37,6 +38,7 @@ $results = $crud->getTicketsALL();
             <th scope="col">Fecha</th>
             <th scope="col">Cliente</th>
             <th scope="col">Equipo</th>
+            <!--<th scope="col">No.Serie</th>-->
             <th scope="col">Servicio</th>
             <th scope="col">Estatus</th>
             </th>
@@ -48,13 +50,15 @@ $results = $crud->getTicketsALL();
                 <td><?php echo $r['folio'] ?></td>
                 <td><?php echo $r['fecha'] ?></td>
                 <!-- Cliente -->
-                <td><?php echo $r['nombre'] ?> <?php echo $r['apellido'] ?></td>
+                <td><?php echo $r['nombre'] . " " . $r['apellido']?></td>
                 <!-- Equipo -->
-                <td><?php echo $r['marca'] ?>, <?php echo $r['modelo'] ?></td>
+                <td><?php echo $r['marca'] . " " . $r['modelo'] ?></td>
+                <!--<td><?php //echo $r['tipo'] . " " $r['marca'] . " " . $r['modelo'];?></td>
+                <td><?php //echo $r['serie'] ?></td>-->
                 <td><?php echo $r['servicio'] ?></td>
                 <td><?php echo $r['estatus'] ?></td>
                 <td>
-                    <a href="<?php page('ticketdetails.php?folio=')?><?php echo $r['folio'] ?>" class="btn btn-primary"><img src="img/view.svg" width="23"></a>
+                <a href="<?php page('ticketdetails.php?folio=')?><?php echo $r['folio'] ?>" class="btn btn-primary"><img src="img/view.svg" width="23"></a>
                 </td>
             </tr>
         <?php } ?>

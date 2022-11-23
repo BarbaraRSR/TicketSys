@@ -18,14 +18,14 @@ if (!isset($_GET['folio'])) {
 <div class="row">
     <div class="col">
         <div class="card">
-            <div class="card-header">Detalles del Ticket</div>
+        <div class="card-header">Detalles del Ticket</div>
             <div class="card-body">
                 <h5 class="card-title">Estatus: <?php echo $result['estatus']; ?></h5>
                 <h6 class="card-subtitle mb-3 text-muted"><?php echo $result['servicio']; ?></h6>
                 <p class="card-text">
                     Equipo <?php echo $result['tipo']; ?>: <?php echo $result['marca']; ?> <?php echo $result['modelo']; ?><br>
                     Número de Serie: <?php echo $result['serie']; ?><br>
-                    Precio Estimado: $<?php echo $result['estimado']; ?><br>
+                    Precio Estimado: <?php echo "$" . $result['estimado']; ?><br>
                     Descripción: <?php echo $result['descripcion']; ?><br>
                     Fecha: <?php echo $result['fecha']; ?><br>
                 </p>
@@ -55,8 +55,29 @@ if (!isset($_GET['folio'])) {
     </div>
 </div>
 
+    <!--
+        <div class="col">
+        <div class="card">
+    
+        <div class="card-header">Información del Equipo</div>
+        <div class="card-body">
+            <h5 class="card-title"><?php echo $result['tipo']; ?></h5>
+            <p class="card-text">
+                Marca: <?php echo $result['marca']; ?><br>
+                Modelo: <?php echo $result['modelo']; ?><br>
+                Número de Serie: <?php echo $result['serie']; ?><br>
+            </p>
+            <br>
+            <a href="<?php page('deviceedit.php?equipo_id=')?><?php echo $result['equipo_id'] ?>" class="btn btn-warning">Actualizar</a>
+        </div>
+        </div>
+    </div>
+-->
+
+
     <br>
     <button onclick="history.back()" class="btn btn-info">Regresar</button>
+    <!--<a href="<?php //page('inicio.php')?>" class="btn btn-info">Regresar</a>-->
 
 <?php } ?>
 
