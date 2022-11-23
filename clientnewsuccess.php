@@ -11,8 +11,9 @@ if (isset($_POST['submit'])) {
     $apellido = $_POST['apellido'];
     $telefono = $_POST['telefono'];
     $correo = $_POST['correo'];
+    $comentarios = $_POST['comentarios'];
 
-    $isSuccess = $crud->insertClient($nombre, $apellido, $telefono, $correo);
+    $isSuccess = $crud->insertClient($nombre, $apellido, $telefono, $correo, $comentarios);
 
     if ($isSuccess) {
         assign('clients.php');
