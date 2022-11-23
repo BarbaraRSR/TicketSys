@@ -22,49 +22,44 @@ if (!isset($_GET['folio'])) {
 
 <div class="container">
   <div class="card border-0 shadow rounded-3 my-5">
-
     <div class="card-body p-4 p-sm-5">
-    
-    <form method="post" action="<?php page('ticketeditpost.php')?>">
+      <form method="post" action="<?php page('ticketeditpost.php')?>">
 
         <input type="hidden" name="folio" value="<?php echo $ticket['folio'] ?>">
 
-        <div class="mb-1">
-            <label for="cliente" class="form-label">Cliente</label>
-            <select class="form-select" aria-label="Default select example" id="cliente" name="cliente">
+        <div class="row">
+            <div class="mb-1">
+                <label for="cliente" class="form-label">Cliente</label>
+                <select class="form-select" aria-label="Default select example" id="cliente" name="cliente">
+                    <?php while ($c = $client->fetch(PDO::FETCH_ASSOC)) { ?>
+                        <option value="<?php echo $c['cliente_id'] ?>" <?php if ($c['cliente_id'] == $ticket['cliente_id']) echo 'selected' ?>>
+                            <?php echo $c['nombre'] . " ". $c['apellido']; ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </div>
 
-                <?php while ($c = $client->fetch(PDO::FETCH_ASSOC)) { ?>
-
-                    <option value="<?php echo $c['cliente_id'] ?>" <?php if ($c['cliente_id'] == $ticket['cliente_id']) echo 'selected' ?>>
-                        <?php echo $c['nombre'] . " ". $c['apellido']; ?>
-                    </option>
+            <div class="mb-1">
+            <label for="equipo" class="form-label">Equipo</label>
+            <select class="form-select" aria-label="Default select example" id="equipo" name="equipo">
+                    
+                    <?php while ($d = $device->fetch(PDO::FETCH_ASSOC)) { $equipo = $d['tipo'] . " ". $d['marca'] . " ". $d['modelo'];?>
+                    <option value="<?php echo $d['equipo_id'] ?>"><?php echo $equipo; ?></option>
                 <?php } ?>
-
             </select>
+
+            <div class="form-floating mb-3">
+                <input required type="text" name="serie" class="form-control" value="<?php echo $ticket['serie'] ?>" id="serie">
+                <label for="serie">Serie*</label>
+            </div>
         </div>
-
-        <hr class="my-4">
-
-        <div class="mb-1">
-        <label for="equipo" class="form-label">Equipo</label>
-        <select class="form-select" aria-label="Default select example" id="equipo" name="equipo">
-                
-                <?php while ($d = $device->fetch(PDO::FETCH_ASSOC)) { $equipo = $d['tipo'] . " ". $d['marca'] . " ". $d['modelo'];?>
-                <option value="<?php echo $d['equipo_id'] ?>"><?php echo $equipo; ?></option>
-            <?php } ?>
-        </select>
-        </div>
-
-        <div class="col"><div class="form-floating mb-3">
-                    <input required type="text" name="serie" class="form-control" value="<?php echo $ticket['serie'] ?>" id="serie">
-                    <label for="serie">Serie*</label>
-                </div></div>
 
         <hr class="my-4">          
 
         <h4 class="card-title text-center mb-5 fw-light fs-5">Información del Ticket</h4>
             
                 <!-- Servicio y costo -->
+            <div class="row">
                 <div class="col"><div class="form-floating mb-3">
                     <input required type="text" name="servicio" class="form-control" value="<?php echo $ticket['servicio'] ?>" id="servicio">
                     <label for="servicio">Servicio*</label>
@@ -73,37 +68,44 @@ if (!isset($_GET['folio'])) {
                     <input type="text" name="estimado" class="form-control" value="<?php echo $ticket['estimado'] ?>" id="estimado">
                     <label for="estimado">Costo estimado</label>
                 </div></div>
+            </div>
                 <!-- Descripción -->
                 <div class="form-floating mb-3">
                     <input required type="text" name="descripcion" class="form-control" value="<?php echo $ticket['descripcion'] ?>" id="descripcion">
                     <label for="descripcion">&nbsp; Descripción del servicio</label>
                 </div>
 
-                <div class=" mb-3">
-            <label for="fecha" class="form-label">Fecha</label>
-            <input type="date" class="form-control" value="<?php echo $ticket['fecha'] ?>" id="fecha" name="fecha">
+                <div class="row">
+                  <div class="col">
+                    <div class=" mb-3">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" value="<?php echo $ticket['fecha'] ?>" id="fecha" name="fecha">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="mb-3">
+                        <label for="estatus" class="form-label">Estatus</label>
+                        <select class="form-select" aria-label="Default select example" id="estatus" name="estatus">
+                            <option value="<?php echo $ticket['estatus'] ?>"><?php echo " --- " . $ticket['estatus'] . " --- "?></option>
+                            <option value="Abierto">Abierto</option>
+                            <option value="Diagnostico">Diagnostico</option>
+                            <option value="Cerrado">Cerrado</option>
+                            <option value="Garantia">Garantia</option>
+                            <option value="Cancelado">Cancelado</option>                   
+                        </select>
+                    </div>
+                  </div>
                 </div>
-        <div class="mb-3">
-            <label for="estatus" class="form-label">Estatus</label>
-            <select class="form-select" aria-label="Default select example" id="estatus" name="estatus">
-                <option value="<?php echo $ticket['estatus'] ?>"><?php echo " --- " . $ticket['estatus'] . " --- "?></option>
-                <option value="Abierto">Abierto</option>
-                <option value="Diagnostico">Diagnostico</option>
-                <option value="Cerrado">Cerrado</option>
-                <option value="Garantia">Garantia</option>
-                <option value="Cancelado">Cancelado</option>                   
-            </select>
-        </div>
-
-            </div>
 
             <!-- Botones -->
             <div class="text-center">
                 <button type="submit" name="submit" class="btn btn-primary btn-block">Confirmar</button>
                 <a href="<?php page('inicio.php')?>" class="btn btn-danger">Cancelar</a>
             </div>
-    </form>
-    
+      </form>
+    </div>
+  </div>
+</div>
 
     
     <?php } ?>

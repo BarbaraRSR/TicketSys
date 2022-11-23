@@ -35,7 +35,6 @@ $results = $crud->getClients();
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Correo</th>
             </th>
@@ -45,12 +44,11 @@ $results = $crud->getClients();
         <?php while ($r = $results->fetch(PDO::FETCH_ASSOC)) { ?>
             <tr>
                 <td><?php echo $r['cliente_id'] ?></td>
-                <td><?php echo $r['nombre'] ?></td>
-                <td><?php echo $r['apellido'] ?></td>
+                <td><?php echo $r['nombre'] ?> <?php echo $r['apellido'] ?></td>
                 <td><?php echo $r['telefono'] ?></td>
                 <td><?php echo $r['correo'] ?></td>
                 <td>
-                    <a href="<?php page('clientdetails.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-primary" title="Ver detalles del cliente"><img src="img/view.svg" width="23"></a>
+                    <a href="<?php page('clientdetails.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-primary" title="Ver historial del cliente"><img src="img/view.svg" width="23"></a>
                     <a href="<?php page('clientedit.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-warning" title="Editar cliente"><img src="img/edit.svg" width="23"></a>
                     <a onclick="return confirm('¿Desea eliminar permanentemente a este cliente?');" href="<?php page('clientdelete.php?cliente_id=')?><?php echo $r['cliente_id'] ?>" class="btn btn-danger" title="Eliminar cliente"><img src="img/trash.svg" width="23"></a>
                 </td>

@@ -9,9 +9,8 @@ if (isset($_POST['submit'])) {
     $apellido = $_POST['apellido'];
     $telefono = $_POST['telefono'];
     $correo = $_POST['correo'];
-    $comentarios = $_POST['comentarios'];
 
-    $result = $crud->editClient($cliente_id, $nombre, $apellido, $telefono, $correo, $comentarios);
+    $result = $crud->editClient($cliente_id, $nombre, $apellido, $telefono, $correo);
     if ($result) {
         //header("Location: clients.php");
         assign('clients.php');
