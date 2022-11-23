@@ -141,14 +141,13 @@ public function insertTicket($cliente, $equipo, $serie, $servicio, $estimado, $d
     public function insertClient($nombre, $apellido, $telefono, $correo, $comentarios)
     {
         try {
-            $sql = "INSERT INTO clients(nombre,apellido,telefono,correo,comentarios)
-                    VALUES (:nombre,:apellido,:telefono,:correo,:comentarios)";
+            $sql = "INSERT INTO clients(nombre,apellido,telefono,correo)
+                    VALUES (:nombre,:apellido,:telefono,:correo)";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':nombre', $nombre);
             $stmt->bindparam(':apellido', $apellido);
             $stmt->bindparam(':telefono', $telefono);
             $stmt->bindparam(':correo', $correo);
-            $stmt->bindparam(':comentarios', $comentarios);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
@@ -160,14 +159,13 @@ public function insertTicket($cliente, $equipo, $serie, $servicio, $estimado, $d
     public function editClient($cliente_id, $nombre, $apellido, $telefono, $correo, $comentarios)
     {
         try {
-            $sql = "UPDATE `clients` SET `nombre`=:nombre,`apellido`=:apellido,`telefono`=:telefono,`correo`=:correo,`comentarios`=:comentarios WHERE cliente_id = :cliente_id";
+            $sql = "UPDATE `clients` SET `nombre`=:nombre,`apellido`=:apellido,`telefono`=:telefono,`correo`=:correo WHERE cliente_id = :cliente_id";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':cliente_id', $cliente_id);
             $stmt->bindparam(':nombre', $nombre);
             $stmt->bindparam(':apellido', $apellido);
             $stmt->bindparam(':telefono', $telefono);
             $stmt->bindparam(':correo', $correo);
-            $stmt->bindparam(':comentarios', $comentarios);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
