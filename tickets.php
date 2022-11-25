@@ -18,7 +18,9 @@ require_once 'includes/header.php';
 //require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-$results = $crud->getTicketsALL();
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
+
+$results = $crud->getTickets($crud->getTicketsALL(), $pagina);
 ?>
 
 <h2>Historial de Tickets</h2>
@@ -65,6 +67,8 @@ $results = $crud->getTicketsALL();
 
     </tbody>
 </table>
+
+<?=$crud->getPaginator('tickets.php');?>
 
 <?php require_once 'includes/footer.php'; ?>
 

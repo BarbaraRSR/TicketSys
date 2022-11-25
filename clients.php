@@ -18,7 +18,9 @@ require_once 'includes/header.php';
 //require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-$results = $crud->getClients();
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
+
+$results = $crud->getClients($crud->getClientsAll(), $pagina);
 ?>
 
 <h2>Directorio de Clientes</h2>
@@ -59,6 +61,8 @@ $results = $crud->getClients();
     </tbody>
 </table>
 
+<?=$crud->getPaginator('clients.php');?>
+
 <?php require_once 'includes/footer.php'; ?>
 
 
@@ -89,3 +93,4 @@ function filterTable(event) {
 
 document.querySelector('#myInput').addEventListener('keyup', filterTable, false);
 </script>
+<?=$crud->getPaginator();?>
