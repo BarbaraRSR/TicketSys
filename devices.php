@@ -18,7 +18,9 @@ require_once 'includes/header.php';
 //require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-$results = $crud->getDevices();
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
+
+$results = $crud->getDevices($crud->getDevicesAll(), $pagina);
 ?>
 
 <h2>Directorio de Equipos</h2>
@@ -57,6 +59,8 @@ $results = $crud->getDevices();
 
     </tbody>
 </table>
+
+<?=$crud->getPaginator('devices.php');?>
 
 <?php require_once 'includes/footer.php'; ?>
 

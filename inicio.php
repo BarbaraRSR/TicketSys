@@ -6,7 +6,9 @@ require_once 'includes/header.php';
 require_once 'includes/auth_check.php'; 
 require_once 'db/conn.php';
 
-$result = $crud->getTickets();
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1; 
+
+$result = $crud->getHome($crud->getHomeALL(), $pagina);
 ?>
 
 <h1>Tickets activos</h1>
@@ -51,5 +53,5 @@ $result = $crud->getTickets();
 
     </tbody>
 </table>
-  
+<?=$crud->getPaginator('inicio.php');?>
 <?php require_once 'includes/footer.php'; ?>

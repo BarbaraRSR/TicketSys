@@ -3,6 +3,7 @@ class crud
 {
     // private database object
     private $db;
+    protected $numPaginas;
 
     //constructor to initialize private variable to the database connection
     function __construct($conn)
@@ -58,13 +59,16 @@ public function insertTicket($cliente, $equipo, $serie, $servicio, $estimado, $d
         }
     }
 
-    public function getTickets()
+    public function getTickets($total, $pagina, $registros = 5)
     {
         try {
+
+            $this->numPaginas = ceil($total/$registros); 
+            $inicio = ($registros*$pagina)-$registros; 
+
             $sql = "SELECT * FROM tickets t 
                     inner join clients c on t.cliente_id = c.cliente_id
-                    inner join devices d on t.equipo_id = d.equipo_id 
-                    WHERE estatus = 'abierto'";
+                    inner join devices d on t.equipo_id = d.equipo_id limit $inicio,$registros";
             $resultado = $this->db->query($sql);
             return $resultado;
         } catch (PDOException $e) {
@@ -76,15 +80,66 @@ public function insertTicket($cliente, $equipo, $serie, $servicio, $estimado, $d
     public function getTicketsALL()
     {
         try {
-            $sql = "SELECT * FROM tickets t 
+            $sql = "SELECT count(*) AS total FROM tickets t 
                     inner join clients c on t.cliente_id = c.cliente_id
                     inner join devices d on t.equipo_id = d.equipo_id";
             $result = $this->db->query($sql);
-            return $result;
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            return $row['total'];
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
         }
+    }
+
+    public function getHome($total, $pagina, $registros = 5)
+    {
+        try {
+
+            $this->numPaginas = ceil($total/$registros); 
+            $inicio = ($registros*$pagina)-$registros; 
+
+            $sql = "SELECT * FROM tickets t 
+                    inner join clients c on t.cliente_id = c.cliente_id
+                    inner join devices d on t.equipo_id = d.equipo_id 
+                    WHERE estatus = 'abierto' limit $inicio,$registros";
+            $resultado = $this->db->query($sql);
+            return $resultado;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getHomeALL()
+    {
+        try {
+            $sql = "SELECT count(*) AS total FROM tickets t 
+                    inner join clients c on t.cliente_id = c.cliente_id
+                    inner join devices d on t.equipo_id = d.equipo_id
+                    WHERE estatus = 'abierto'";
+            $result = $this->db->query($sql);
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            return $row['total'];
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getPaginator($page)
+    {
+        $paginator = '';
+        if ($this->numPaginas > 1) {
+            $paginator .= '<nav aria-label="Page navigation example">
+        <ul class="pagination">';
+            for($i = 1; $i < $this->numPaginas + 1; $i++) { 
+                $paginator .= "<li class='page-item'><a class='page-link' href='".$page."?pagina=$i'>".$i."</a></li>"; 
+            } 
+            $paginator .= '</ul>
+            </nav>';
+        }
+        return $paginator;
     }
 
     public function getTicketsClient($cliente_id)
@@ -174,12 +229,29 @@ public function insertTicket($cliente, $equipo, $serie, $servicio, $estimado, $d
         }
     }
 
-    public function getClients()
+    public function getClients($total, $pagina, $registros = 5)
     {
         try {
-            $sql = "SELECT * FROM clients";
+
+            $this->numPaginas = ceil($total/$registros); 
+            $inicio = ($registros*$pagina)-$registros; 
+
+            $sql = "SELECT * FROM clients limit $inicio,$registros";
             $result = $this->db->query($sql);
             return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getClientsAll()
+    {
+        try {
+            $sql = "SELECT count(*) AS total FROM clients";
+            $result = $this->db->query($sql);
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            return $row['total'];
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
@@ -255,12 +327,29 @@ public function editDevice($equipo_id, $tipo, $marca, $modelo)
     }
 }
 
-    public function getDevices()
+    public function getDevices($total, $pagina, $registros = 5)
     {
         try {
-            $sql = "SELECT * FROM `devices`";
+
+            $this->numPaginas = ceil($total/$registros); 
+            $inicio = ($registros*$pagina)-$registros; 
+
+            $sql = "SELECT * FROM `devices`  limit $inicio,$registros";
             $result = $this->db->query($sql);
             return $result;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getDevicesAll()
+    {
+        try {
+            $sql = "SELECT count(*) AS total FROM `devices`";
+            $result = $this->db->query($sql);
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            return $row['total'];
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
