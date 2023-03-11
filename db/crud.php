@@ -229,14 +229,10 @@ public function insertTicket($cliente, $equipo, $serie, $servicio, $estimado, $d
         }
     }
 
-    public function getClients($total, $pagina, $registros = 5)
+    public function getClients()
     {
         try {
-
-            $this->numPaginas = ceil($total/$registros); 
-            $inicio = ($registros*$pagina)-$registros; 
-
-            $sql = "SELECT * FROM clients limit $inicio,$registros";
+            $sql = "SELECT * FROM clients";
             $result = $this->db->query($sql);
             return $result;
         } catch (PDOException $e) {
@@ -327,21 +323,17 @@ public function editDevice($equipo_id, $tipo, $marca, $modelo)
     }
 }
 
-    public function getDevices($total, $pagina, $registros = 5)
-    {
-        try {
-
-            $this->numPaginas = ceil($total/$registros); 
-            $inicio = ($registros*$pagina)-$registros; 
-
-            $sql = "SELECT * FROM `devices`  limit $inicio,$registros";
-            $result = $this->db->query($sql);
-            return $result;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
-        }
+public function getDevices()
+{
+    try {
+        $sql = "SELECT * FROM `devices`";
+        $result = $this->db->query($sql);
+        return $result;
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+        return false;
     }
+}
 
     public function getDevicesAll()
     {
