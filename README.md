@@ -2,6 +2,25 @@
 El nuevo sistema para control de ordenes de servicio para sucursales de reparación de equipo de cómputo.
 
 
+TERCER SPRINT
+********** ********** **********
+
+TAREAS:
+07. Creación de las bases de datos
+   Responsable: Pamela
+   Se crean las tablas de la estructura de las bases de datos, definiendo los campos, índices,  las relaciones y llaves necesarias para almacenar la información y garantizar su consistencia. En la siguiente imagen se muestra la evidencia de las bases de datos SQL.
+   Entregable: Se considera que las tablas presentadas mantienen consistencia con el diseño previamente desarrollado y funcionan para el proceso de la aplicación: clientes, usuarios, tickets, tipo de dispositivo electrónico y comentarios. Es importante mencionar que se ha elegido una base de datos SQL sobre una base de datos NoSQL de acuerdo al número de usuarios que utilizarán la aplicación y por la selección de llaves primarias preestablecidas por el cliente en cada una de las tablas.
+
+08. Conexión a la base de datos
+   Responsable: Pamela
+   Se realiza la configuración de la conexión de la base de datos, especificando la dirección del servidor, el puerto, usuario y contraseña para proteger la información de cambios no autorizados.
+   Entregable: Una vez terminadas las pruebas finales, se entregará al cliente la información  final con los permisos que le corresponden.
+
+Fecha de actualización: 10 de marzo del 2023
+
+********** ********** **********
+********** ********** **********
+
 SEGUNDO SPRINT
 ********** ********** **********
 
