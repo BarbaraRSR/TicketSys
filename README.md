@@ -1,11 +1,31 @@
 # TicketSys
 El nuevo sistema para control de ordenes de servicio para sucursales de reparación de equipo de cómputo.
 
+********** ********** **********
+CUARTO SPRINT
+********** ********** **********
 
+TAREAS:
+
+09. Desarrollo del Back-End
+   Responsable: Pamela
+   Se define el diseño de la arquitectura del back-end, tomando en cuenta el tipo de servidor a usar. Posterior a eso se implementa la capa de accesos a datos, desarrollando métodos y funciones necesarias para realizar operaciones de consulta, inserción y eliminación de datos. 
+   Entregable: Prototipo navegable donde se pueda realizar el inicio de sesión:
+   https://ticketsys.laptown.com/index.php
+
+10. Front-End: Página principal
+   Responsable: Pamela
+   Formulario de inicio de sesión y primera página de la vista principal de los tickets activos.
+   Entregable: Posterior al inicio de sesión en el prototipo, se puede ver la página principal con la tabla de tickets activos.
+   https://ticketsys.laptown.com/index.php
+
+********** ********** **********
+********** ********** **********
 TERCER SPRINT
 ********** ********** **********
 
 TAREAS:
+
 07. Creación de las bases de datos
    Responsable: Pamela
    Se crean las tablas de la estructura de las bases de datos, definiendo los campos, índices,  las relaciones y llaves necesarias para almacenar la información y garantizar su consistencia. En la siguiente imagen se muestra la evidencia de las bases de datos SQL.
@@ -25,6 +45,7 @@ SEGUNDO SPRINT
 ********** ********** **********
 
 TAREAS:
+
 04. Diseño de wireframes
    Responsable: Pamela
    Descripción: Mostrar al product owner una visión de cómo lucirá el programa.
@@ -52,6 +73,7 @@ PRIMER SPRINT
 ********** ********** **********
 
 TAREAS:
+
 01. Definición del proyecto.
    Responsable: Bárbara
    Descripción: Contar con una definición completa y clara con la información del proyecto.
