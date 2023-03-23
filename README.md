@@ -1,6 +1,14 @@
 # TicketSys
 El nuevo sistema para control de ordenes de servicio para sucursales de reparación de equipo de cómputo.
 
+11. Front-End de la vista de ticket | Responsable: Pamela | Descripción: Se desarrolla a través de PHP, Html, CSS y Javascript el front-end que permitirá al usuario final conocer la descripción detallada de los tickets subidos en el sistema. Para ello, se consideran los wireframes realizados en los sprints anteriores y el diagrama de flujo con los procesos a implementar.
+  Entregable: Prototipo navegable donde se pueda visualizar la vista detallada de un ticket.
+  https://ticketsys.laptown.com/index.php
+
+10. Front-End de la página de clientes | Responsable: Pamela | Descripción: Para una mejor experiencia de usuario, se desarrolla un menú navegable que permite visualizar el directorio de los clientes de la empresa.
+  Entregable: Posterior navegable donde se pueda visualizar el directorio de clientes.
+  https://ticketsys.laptown.com/index.php
+
 ********** ********** **********
 CUARTO SPRINT
 ********** ********** **********
@@ -15,7 +23,7 @@ TAREAS:
    Entregable: Posterior al inicio de sesión en el prototipo, se puede ver la página principal con la tabla de tickets activos.
    https://ticketsys.laptown.com/index.php
 
-Fecha de actualización: 15 de marzo del 2023
+Fecha de actualización: 22 de marzo del 2023
 
 ********** ********** **********
 TERCER SPRINT
