@@ -1,13 +1,23 @@
 # TicketSys
 El nuevo sistema para control de ordenes de servicio para sucursales de reparación de equipo de cómputo.
 
-11. Front-End de la vista de ticket | Responsable: Pamela | Descripción: Se desarrolla a través de PHP, Html, CSS y Javascript el front-end que permitirá al usuario final conocer la descripción detallada de los tickets subidos en el sistema. Para ello, se consideran los wireframes realizados en los sprints anteriores y el diagrama de flujo con los procesos a implementar.
-  Entregable: Prototipo navegable donde se pueda visualizar la vista detallada de un ticket.
-  https://ticketsys.laptown.com/index.php
 
-10. Front-End de la página de clientes | Responsable: Pamela | Descripción: Para una mejor experiencia de usuario, se desarrolla un menú navegable que permite visualizar el directorio de los clientes de la empresa.
-  Entregable: Posterior navegable donde se pueda visualizar el directorio de clientes.
-  https://ticketsys.laptown.com/index.php
+********** ********** **********
+QUINTO SPRINT
+********** ********** **********
+
+TAREAS:
+
+11. Front-End de la vista de ticket | Responsable: Pamela | Desarrollar el front-end que permitirá al usuario conocer la descripción detallada de los tickets registrados en el sistema, junto con la asociación y datos del cliente considerando los wireframes realizados en los sprints anteriores.
+  Entregable: Evidencia de la vista de un ticket.
+
+12. Front-End de la página de clientes | Responsable: Pamela | Descripción: Desarrolla la parte del sistema donde se puede consultar el directorio de clientes, así como la funcionalidad necesaria para llevar a cabo las importantes tareas de ingresar o modificar los datos registrados.
+  Entregable: Evidencia del directorio de clientes.
+
+13. Front-End de la página de equipos | Responsable: Pamela | Descripción: Desarrollar de manera sencilla el registro, edición y eliminación de equipos en la vista de front-end.
+  Entregable: Evidencia rel registro de equipos.
+
+Fecha de actualización: 26 de marzo del 2023
 
 ********** ********** **********
 CUARTO SPRINT
