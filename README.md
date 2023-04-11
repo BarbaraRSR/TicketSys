@@ -1,6 +1,30 @@
 # TicketSys
 El nuevo sistema para control de ordenes de servicio para sucursales de reparación de equipo de cómputo.
 
+********** ********** **********
+SÉPTIMO SPRINT
+********** ********** **********
+
+TAREAS:
+
+14. Front-End: Administración | Responsable: Pamela | Descripción: Desarrollar la parte del sistema donde sea posible exportar la información de un ticket en PDF para poder entregarle una copia al cliente cuando éste lo solicite.
+
+16. Identificar complicaciones de usabilidad | Responsable: Karla | Descripción: Navegar el sitio web y cada una de sus secciones para obtener un diagnóstico de usabilidad.
+
+17. Probar desempeño y tiempos de carga | Responsable: Bárbara | Descripción: Obtener un diagnóstico de tiempos de carga y desempeño de la aplicación web para realizar los ajustes requeridos de ser necesario.
+
+18. Verificar enlaces | Responsable: Karla | Descripción: Garantizar que no existan enlaces rotos en la aplicación web.
+
+19. Pruebas y correcciones | Responsable: Pamela | Descripción: Llevar a cabo las pruebas y correcciones que se hayan reportado en las tareas anteriores.
+
+********** ********** **********
+SEXTO SPRINT
+********** ********** **********
+
+TAREAS:
+
+15. Aplicar responsividad en navegadores web | Responsable: Pamela | Descripción: Validar que la visibilidad del sistema web sea agradable en dispositivos móviles y tabletas. Del mismo modo, debe ser posible utilizar todas sus funciones de manera cómoda y adecuada.
+
 
 ********** ********** **********
 QUINTO SPRINT
